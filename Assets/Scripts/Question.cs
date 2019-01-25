@@ -11,9 +11,9 @@ public enum ReactionType
 
 public class Question
 {
-	private Personality Character { get; };
-    private string Text { get; }
-    private Dictionary<ReactionType, Answer> Answers;
+	public Personality Personality;
+	public string Text;
+    public Dictionary<ReactionType, Snippet> Answers;
 
     
     /// <param name="character">
@@ -25,7 +25,7 @@ public class Question
     /// </returns>
     public ReactionType GetReactionFor(Personality character)
     {
-        if (Character == character)
+        if (Personality == character)
         {
             return ReactionType.Comforting;
         }
@@ -37,7 +37,7 @@ public class Question
     /// <returns>
     /// Returns the Answer that is used for the given type of reaction.
     /// </returns>
-    public Answer GetAnswer(ReactionType reaction)
+    public Snippet GetAnswer(ReactionType reaction)
     {
         return Answers[reaction];
     }

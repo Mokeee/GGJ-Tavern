@@ -2,11 +2,11 @@
 	"answers": [
 		{
 			"text": "Here goes your text.",
-			"need": "None"
+			"need": "0"
 		},
 		{
 			"text": "Here goes your text.",
-			"need": "Hunger"
+			"need": "1"
 		}
 	]
 }

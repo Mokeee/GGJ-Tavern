@@ -5,7 +5,7 @@ using UnityEngine;
 public class TextAssets
 {
 	public List<Question> Questions;
-	public List<Answer> Answers;
+	public List<Snippet> Answers;
 	public List<Adventure> Adventures;
 
 	/// <summary>

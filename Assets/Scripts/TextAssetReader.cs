@@ -5,7 +5,7 @@ using System.IO;
 
 public class TextAssetReader : MonoBehaviour
 {
-	TextAssets TextAssets;
+	public TextAssets TextAssets;
 
 	/// <summary>
 	/// Initializes TextAssets.
@@ -21,57 +21,70 @@ public class TextAssetReader : MonoBehaviour
 	public void StartReadingTextAssets()
 	{
 		TextAssets.Answers = ReadAnswers();
-		TextAssets.Questions = ReadAnswers();
-		TextAssets.Answers = ReadAnswers();
+		TextAssets.Questions = ReadQuestions(TextAssets.Answers);
+		TextAssets.Adventures = ReadAdventures();
 	}
 
 	/// <summary>
 	/// Reads the questions json and stores them into text assets.
 	/// </summary>
-	void List<Question> ReadQuestions()
+	List<Question> ReadQuestions(List<Snippet> answers)
 	{
-
-	}
-
-	/// <summary>
-	/// Reads the answers json and stores them into text assets.
-	/// </summary>
-	void List<Answer> ReadAnswers()
-	{
-		string filePath = Path.Combine(Application.streamingAssetsPath, languageFileName);
+		var loadedData = new QuestionData();
+		string filePath = Path.Combine(Application.streamingAssetsPath, "answers.json");
 		Debug.Log("Path:" + filePath);
 		if (File.Exists(filePath))
 		{
 			string dataAsJson = File.ReadAllText(filePath);
-			ReaderData loadedData = JsonUtility.FromJson<ReaderData>(dataAsJson);
-
-			for (int i = 0; i < loadedData.items.Length; i++)
-			{
-				if (localizationDatabase.ContainsKey(loadedData.items[i].key))
-				{
-					Debug.LogError(loadedData.items[i].key + " localised twice.");
-				}
-				else
-				{
-					localizationDatabase.Add(loadedData.items[i].key, loadedData.items[i].value);
-				}
-
-			}
-
-			Debug.Log("Data loaded, dictionary contains: " + localizationDatabase.Count + " entries");
-			PlayerPrefs.SetString(PreferenceKeys.Locales.Language, languageFileName);
+			loadedData = JsonUtility.FromJson<QuestionData>(dataAsJson);
 		}
 		else
 		{
 			Debug.LogError("Cannot find file!");
 		}
+
+		return loadedData.ConvertToQuestions(answers);
+	}
+
+	/// <summary>
+	/// Reads the answers json and stores them into text assets.
+	/// </summary>
+	List<Snippet> ReadAnswers()
+	{
+		AnswerData loadedData = new AnswerData();
+		string filePath = Path.Combine(Application.streamingAssetsPath, "answers.json");
+		Debug.Log("Path:" + filePath);
+		if (File.Exists(filePath))
+		{
+			string dataAsJson = File.ReadAllText(filePath);
+			loadedData = JsonUtility.FromJson<AnswerData>(dataAsJson);
+		}
+		else
+		{
+			Debug.LogError("Cannot find file!");
+		}
+
+		return loadedData.ConvertToAnswers();
 	}
 
 	/// <summary>
 	/// Reads the adventures json and stores them into text assets.
 	/// </summary>
-	void List<Adventure> ReadAdventures()
+	List<Adventure> ReadAdventures()
 	{
+		AnswerData loadedData = new AnswerData();
+		string filePath = Path.Combine(Application.streamingAssetsPath, "answers.json");
+		Debug.Log("Path:" + filePath);
+		if (File.Exists(filePath))
+		{
+			string dataAsJson = File.ReadAllText(filePath);
+			loadedData = JsonUtility.FromJson<AnswerData>(dataAsJson);
+		}
+		else
+		{
+			Debug.LogError("Cannot find file!");
+		}
 
+		return loadedData.ConvertToAnswers();
 	}
 }

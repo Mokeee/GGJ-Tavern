@@ -15,14 +15,14 @@ public enum SnippetType
 /// </summary>
 public class Adventure
 {
-	public Dictionary<SnippetType, List<AdventureSnippet>> AdventureSnippetDictionary;
+	public Dictionary<SnippetType, List<Snippet>> AdventureSnippetDictionary;
 
 	/// <summary>
 	/// Returns a random snippet for given snippet type.
 	/// </summary>
 	/// <param name="type">Type of the snippet</param>
 	/// <returns></returns>
-	public AdventureSnippet GetRandomSnippet(SnippetType type)
+	public Snippet GetRandomSnippet(SnippetType type)
 	{
 		var snippets = AdventureSnippetDictionary[type];
 

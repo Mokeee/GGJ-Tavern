@@ -12,7 +12,7 @@ public enum Personality
 {
     Heroic,
 	Noble,
-	Shy
+	Shy,
 }
 
 public class NPC

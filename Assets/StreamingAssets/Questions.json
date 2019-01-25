@@ -2,18 +2,8 @@
 	"questions": [
 			{
 							"text": "Here goes your text.",
-							"personality": "Heroic",
-							"answers": [
-								{
-									"id": "0"
-								},
-								{
-									"id": "1"
-								},
-								{
-									"id": "2"
-								}
-							]
+							"personality": "0",
+							"answers": ["0","1","2"]
 			}
 	]
 }
