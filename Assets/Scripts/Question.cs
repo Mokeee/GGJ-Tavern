@@ -15,6 +15,10 @@ public class Question
 	public string Text;
     public Dictionary<ReactionType, Snippet> Answers;
 
+	public Question()
+	{
+		Answers = new Dictionary<ReactionType, Snippet>();
+	}
     
     /// <param name="character">
     /// The character type to get a reaction for.

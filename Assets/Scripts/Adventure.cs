@@ -17,6 +17,14 @@ public class Adventure
 {
 	public Dictionary<SnippetType, List<Snippet>> AdventureSnippetDictionary;
 
+	public Adventure()
+	{
+		AdventureSnippetDictionary = new Dictionary<SnippetType, List<Snippet>>();
+		AdventureSnippetDictionary.Add(SnippetType.Pre, new List<Snippet>());
+		AdventureSnippetDictionary.Add(SnippetType.Main, new List<Snippet>());
+		AdventureSnippetDictionary.Add(SnippetType.Post, new List<Snippet>());
+	}
+
 	/// <summary>
 	/// Returns a random snippet for given snippet type.
 	/// </summary>

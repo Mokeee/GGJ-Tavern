@@ -1,16 +1,16 @@
 {
-	"answers": [
+	"greetings": [
 		{
 			"text": "Here goes your text.",
-			"need": "0"
+			"personality": "0"
 		},
 		{
 			"text": "Here goes your second text.",
-			"need": "1"
+			"personality": "1"
 		},
 		{
 			"text": "Here goes your third text.",
-			"need": "0"
+			"personality": "2"
 		}
 	]
 }

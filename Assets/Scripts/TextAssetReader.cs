@@ -12,7 +12,6 @@ public class TextAssetReader : MonoBehaviour
 	/// </summary>
 	private void Start()
 	{
-		TextAssets = new TextAssets();
 	}
 
 	/// <summary>
@@ -20,8 +19,11 @@ public class TextAssetReader : MonoBehaviour
 	/// </summary>
 	public void StartReadingTextAssets()
 	{
+		TextAssets = new TextAssets();
+
 		TextAssets.Answers = ReadAnswers();
 		TextAssets.Questions = ReadQuestions(TextAssets.Answers);
+		TextAssets.Greetings = ReadGreetings();
 		TextAssets.Adventures = ReadAdventures();
 	}
 
@@ -31,7 +33,7 @@ public class TextAssetReader : MonoBehaviour
 	List<Question> ReadQuestions(List<Snippet> answers)
 	{
 		var loadedData = new QuestionData();
-		string filePath = Path.Combine(Application.streamingAssetsPath, "answers.json");
+		string filePath = Path.Combine(Application.streamingAssetsPath, "Questions.json");
 		Debug.Log("Path:" + filePath);
 		if (File.Exists(filePath))
 		{
@@ -52,7 +54,7 @@ public class TextAssetReader : MonoBehaviour
 	List<Snippet> ReadAnswers()
 	{
 		AnswerData loadedData = new AnswerData();
-		string filePath = Path.Combine(Application.streamingAssetsPath, "answers.json");
+		string filePath = Path.Combine(Application.streamingAssetsPath, "Answers.json");
 		Debug.Log("Path:" + filePath);
 		if (File.Exists(filePath))
 		{
@@ -72,19 +74,40 @@ public class TextAssetReader : MonoBehaviour
 	/// </summary>
 	List<Adventure> ReadAdventures()
 	{
-		AnswerData loadedData = new AnswerData();
-		string filePath = Path.Combine(Application.streamingAssetsPath, "answers.json");
+		AdventureData loadedData = new AdventureData();
+		string filePath = Path.Combine(Application.streamingAssetsPath, "Adventures.json");
 		Debug.Log("Path:" + filePath);
 		if (File.Exists(filePath))
 		{
 			string dataAsJson = File.ReadAllText(filePath);
-			loadedData = JsonUtility.FromJson<AnswerData>(dataAsJson);
+			loadedData = JsonUtility.FromJson<AdventureData>(dataAsJson);
 		}
 		else
 		{
 			Debug.LogError("Cannot find file!");
 		}
 
-		return loadedData.ConvertToAnswers();
+		return loadedData.ConvertToAdventure();
+	}
+
+	/// <summary>
+	/// Reads the greetings json and stores them into text assets.
+	/// </summary>
+	List<Greeting> ReadGreetings()
+	{
+		GreetingData loadedData = new GreetingData();
+		string filePath = Path.Combine(Application.streamingAssetsPath, "Greetings.json");
+		Debug.Log("Path:" + filePath);
+		if (File.Exists(filePath))
+		{
+			string dataAsJson = File.ReadAllText(filePath);
+			loadedData = JsonUtility.FromJson<GreetingData>(dataAsJson);
+		}
+		else
+		{
+			Debug.LogError("Cannot find file!");
+		}
+
+		return loadedData.ConvertToGreeting();
 	}
 }
