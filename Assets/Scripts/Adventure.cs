@@ -10,12 +10,24 @@ public enum SnippetType
 	Post
 }
 
+/// <summary>
+/// Class that contains adventure text snippets.
+/// </summary>
 public class Adventure
 {
 	public Dictionary<SnippetType, List<AdventureSnippet>> AdventureSnippetDictionary;
 
-	public AdventureSnippet GetRandomSnippet(SnippetType)
+	/// <summary>
+	/// Returns a random snippet for given snippet type.
+	/// </summary>
+	/// <param name="type">Type of the snippet</param>
+	/// <returns></returns>
+	public AdventureSnippet GetRandomSnippet(SnippetType type)
 	{
+		var snippets = AdventureSnippetDictionary[type];
 
+		var randomIndex = Random.Range((int)0, snippets.Count);
+
+		return snippets[randomIndex];
 	}
 }

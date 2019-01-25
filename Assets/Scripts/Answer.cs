@@ -2,17 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Answer : MonoBehaviour
+/// <summary>
+/// Struct that contains information about an answer.
+/// </summary>
+public struct Answer
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public string Text;
+	public Need Need;
 }

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Question
 {
-
-    private Character Type { get; }
+    private Personality Type { get; }
     private string Text { get; }
     private Answer[] Answers;
 

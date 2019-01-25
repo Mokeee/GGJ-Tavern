@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextAssets : MonoBehaviour
+public class TextAssets
 {
 	public List<Question> Questions;
 	public List<Answer> Answers;

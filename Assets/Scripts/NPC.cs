@@ -4,12 +4,15 @@ using UnityEngine;
 
 public enum Need
 {
-    FOO
+    None,
+	Hunger
 }
 
-public enum Character
+public enum Personality
 {
-    FOO
+    Heroic,
+	Noble,
+	Shy
 }
 
 public class NPC
@@ -18,9 +21,9 @@ public class NPC
     private LinkedList<Need> SpecialNeeds { get; }
 
     private float ComfortLevel { get; }
-    private Character Character { get; }
+    private Personality Character { get; }
 
-    public NPC(Character character, LinkedList<Need> needs)
+    public NPC(Personality character, LinkedList<Need> needs)
     {
         this.Needs = needs;
         this.SpecialNeeds = new LinkedList<Need>();

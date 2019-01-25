@@ -1,0 +1,19 @@
+{
+	"questions": [
+			{
+							"text": "Here goes your text.",
+							"personality": "Heroic",
+							"answers": [
+								{
+									"id": "0"
+								},
+								{
+									"id": "1"
+								},
+								{
+									"id": "2"
+								}
+							]
+			}
+	]
+}

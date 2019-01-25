@@ -1,0 +1,8 @@
+{
+	"adventures": [
+			{
+							"text": "Here goes your text.",
+							"type": "Greeting"
+			}
+	]
+}
