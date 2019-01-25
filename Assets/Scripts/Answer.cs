@@ -2,17 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Answer : MonoBehaviour
+public class Answer
 {
-    // Start is called before the first frame update
-    void Start()
+    private string Text { get; }
+    private Need SpecialNeed { get; }
+
+    public Answer(string text, Need specialNeed)
     {
-        
+        Text = text;
+        SpecialNeed = specialNeed;
     }
 
-    // Update is called once per frame
-    void Update()
+    /// <summary>
+    /// Sets the SpecialNeed to None.
+    /// </summary>
+    /// 
+    /// <param name="text">
+    /// The text to use for this answer.
+    /// </param>
+    public Answer(string text)
     {
-        
+        Text = text;
+        SpecialNeed = Need.FOO; //Replace with None
     }
+
 }
