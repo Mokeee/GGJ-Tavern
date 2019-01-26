@@ -12,17 +12,25 @@ public class TextAssetDisplayer : MonoBehaviour
     void Start()
     {
 		TextAssetReader.StartReadingTextAssets();
-		StartCoroutine(DisplayGreetings());
+		StartCoroutine(Display());
     }
 
-	private IEnumerator DisplayGreetings()
+	private IEnumerator Display()
 	{
-		int index = 0;
+        int greetingsIndex = 0;
+        int questionsIndex = 0;
 		while(true)
 		{
-			UIText.text = TextAssetReader.TextAssets.Greetings[index].Personality.ToString();
-			index = (index + 1) % TextAssetReader.TextAssets.Greetings.Count;
-			yield return new WaitForSeconds(1.0f);
+			UIText.text = TextAssetReader.TextAssets.Greetings[greetingsIndex].Personality.ToString();
+			greetingsIndex = (greetingsIndex + 1) % TextAssetReader.TextAssets.Greetings.Count;
+            UIText.text += "\n\n" + TextAssetReader.TextAssets.Questions[questionsIndex].Text 
+            + "\n" + TextAssetReader.TextAssets.Questions[questionsIndex].Personality.ToString()
+            + "\n" + TextAssetReader.TextAssets.Questions[questionsIndex].GetAnswer(ReactionType.Annoying).Text
+            + "\n" + TextAssetReader.TextAssets.Questions[questionsIndex].GetAnswer(ReactionType.Okay).Text
+            + "\n" + TextAssetReader.TextAssets.Questions[questionsIndex].GetAnswer(ReactionType.Comforting).Text;
+            greetingsIndex = (greetingsIndex + 1) % TextAssetReader.TextAssets.Greetings.Count;
+            questionsIndex = (questionsIndex + 1) % TextAssetReader.TextAssets.Questions.Count;
+            yield return new WaitForSeconds(1.0f);
 		}
 	}
 }
