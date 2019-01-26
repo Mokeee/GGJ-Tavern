@@ -1,9 +1,49 @@
 {
 	"questions": [
-			{
-							"text": "Here goes your text.",
-							"personality": "0",
-							"answers": ["0","1","2"]
-			}
+    {
+      "text": "Here goes your text.",
+      "personality": "0",
+      "answers": [ "0", "1", "2" ]
+    },
+    {
+      "text": "Here goes your text.",
+      "personality": "1",
+      "answers": [ "0", "1", "2" ]
+    },
+    {
+      "text": "Here goes your text.",
+      "personality": "2",
+      "answers": [ "0", "1", "2" ]
+    },
+    {
+      "text": "Here goes your text.",
+      "personality": "0",
+      "answers": [ "0", "1", "2" ]
+    },
+    {
+      "text": "Here goes your text.",
+      "personality": "1",
+      "answers": [ "0", "1", "2" ]
+    },
+    {
+      "text": "Here goes your text.",
+      "personality": "2",
+      "answers": [ "0", "1", "2" ]
+    },
+    {
+      "text": "Here goes your text.",
+      "personality": "0",
+      "answers": [ "0", "1", "2" ]
+    },
+    {
+      "text": "Here goes your text.",
+      "personality": "1",
+      "answers": [ "0", "1", "2" ]
+    },
+    {
+      "text": "Here goes your text.",
+      "personality": "2",
+      "answers": [ "0", "1", "2" ]
+    }
 	]
 }

@@ -100,4 +100,9 @@ public class NPCPool : MonoBehaviour
     {
         NPCs[npc.id] = npc;
     }
+
+    public void AnnihilateNPC(int id)
+    {
+        ActiveNPCs[id] = false;
+    }
 }

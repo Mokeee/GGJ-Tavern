@@ -34,7 +34,7 @@ public class Adventure
 	{
 		var snippets = AdventureSnippetDictionary[type];
 
-		var randomIndex = Random.Range((int)0, snippets.Count);
+        var randomIndex = Random.Range(0, snippets.Count);
 
 		return snippets[randomIndex];
 	}

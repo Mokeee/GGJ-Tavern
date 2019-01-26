@@ -8,7 +8,7 @@ using TMPro;
 /// <summary>
 /// This event will be invoked when the player requests the next line to pop up.
 /// </summary>
-public class RequestNextEvent : UnityEvent { }
+public class RequestNextEvent : UnityEvent<bool> { }
 
 /// <summary>
 /// this event will be invoked when the player has chosen the next question.
@@ -18,27 +18,28 @@ public class QuestionChosenEvent : UnityEvent<int> { }
 
 public class DialogDisplayer : MonoBehaviour
 {
-    public RequestNextEvent RequestNextEvent;
-    public QuestionChosenEvent QuestionChosenEvent;
+    public RequestNextEvent RequestNextEvent = new RequestNextEvent();
+    public QuestionChosenEvent QuestionChosenEvent = new QuestionChosenEvent();
 
-    public TextMeshPro TextMesh;
+    public TextMeshProUGUI TextMesh;
 
     public Button Next;
 
-    public Button[] QuestionButtons;
+    public Button[] QuestionButtons = new Button[3];
     private Text[] Texts;
 
     public void Start()
     {
         Texts = new Text[QuestionButtons.Length];
 
-        for (int i = 0; i < QuestionButtons.Length; ++i)
+        for (int i = 0; i < QuestionButtons.Length; i++)
         {
-            QuestionButtons[i].onClick.AddListener(delegate { ChooseNextQuestion(i); });
+            var index = i;
+            QuestionButtons[i].onClick.AddListener(delegate { ChooseNextQuestion(index); });
             Texts[i] = QuestionButtons[i].GetComponentInChildren<Text>();
         }
 
-        Next.onClick.AddListener(RequestNext);
+        Next.onClick.AddListener(delegate { RequestNext(false); });
     }
 
 
@@ -48,9 +49,9 @@ public class DialogDisplayer : MonoBehaviour
     }
 
 
-    private void RequestNext()
+    private void RequestNext(bool isLeaving)
     {
-        RequestNextEvent.Invoke();
+        RequestNextEvent.Invoke(isLeaving);
     }
 
 
@@ -63,7 +64,7 @@ public class DialogDisplayer : MonoBehaviour
     public void DisplaySnippet(string snippet)
     {
         TextMesh.SetText(snippet);
-        Next.enabled = true;
+        Next.gameObject.SetActive(true);
         DisableQuestionButtons();
     }
 
@@ -72,7 +73,7 @@ public class DialogDisplayer : MonoBehaviour
     {
         for (int i = 0; i < questions.Count; ++i)
         {
-            QuestionButtons[i].enabled = true;
+            QuestionButtons[i].gameObject.SetActive(true);
             Texts[i].text = questions[i];
         }
     }
@@ -89,8 +90,17 @@ public class DialogDisplayer : MonoBehaviour
     {
         foreach (Button button in QuestionButtons)
         {
-            button.enabled = false;
+            button.gameObject.SetActive(false);
         }
     }
 
+    public void SetInvisible()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    public void SetVisible()
+    {
+        this.gameObject.SetActive(true);
+    }
 }

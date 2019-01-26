@@ -18,12 +18,17 @@ public class GameClock : MonoBehaviour
 
     List<List<NPC>> CustomersOfDay;
 
+    ConversationOverData Cod;
+
 
     // Start is called before the first frame update
     void Start()
     {
         Day = 0;
 
+        Cod = new ConversationOverData();
+
+        DialogSystem.ConversationOverEvent.AddListener(delegate { HandleEndOfDialog(Cod); });
         InventorySystem.EndedFullfillment.AddListener(() => { HandleEndOfFullfillment(); });
         InventorySystem.EndedResupply.AddListener(() => { EndDay(); });
         StartResupply();
@@ -102,8 +107,9 @@ public class GameClock : MonoBehaviour
     /// <param name="isLeaving">If set to <c>true</c> is leaving.</param>
     void StartDialog(NPC npc, bool isLeaving)
     {
-        //DialogSystem
-        HandleEndOfDialog(npc, isLeaving);
+        Cod.npc = npc;
+        Cod.isLeaving = isLeaving;
+        DialogSystem.StartDialog(npc, isLeaving);
     }
 
     /// <summary>
@@ -111,12 +117,16 @@ public class GameClock : MonoBehaviour
     /// </summary>
     /// <param name="npc">Npc.</param>
     /// <param name="isLeaving">Is leaving.</param>
-    public void HandleEndOfDialog(NPC npc, bool isLeaving)
+    public void HandleEndOfDialog(ConversationOverData cod)
     {
-        //if (isLeaving)
-        //    Proceed();
-        //else
-            StartFullfillment(npc);
+        Debug.Log("HI");
+        if (cod.isLeaving)
+        {
+            pool.AnnihilateNPC(cod.npc.id);
+            Proceed();
+        }
+        else
+            StartFullfillment(cod.npc);
     }
 
     /// <summary>

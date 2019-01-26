@@ -3,19 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+public struct ConversationOverData
+{
+    public NPC npc;
+    public bool isLeaving;
+}
 
-public class ConversationOverEvent : UnityEvent<NPC> { }
+public class ConversationOverEvent : UnityEvent<ConversationOverData> { }
 
 public class DialogSystem : MonoBehaviour
 {
     public DialogDisplayer DialogDisplayer;
 
-    public ConversationOverEvent ConversationOverEvent;
+    public ConversationOverEvent ConversationOverEvent = new ConversationOverEvent();
+
+    public TextAssetReader TAR;
 
     private int MaxQuestions = 3;
     private int QuestionSelectionSize = 3;
 
-    private TextAssets TextAssets;
+
 
     private NPC NPC;
 
@@ -28,8 +35,8 @@ public class DialogSystem : MonoBehaviour
 
     public void Start()
     {
-        DialogDisplayer.RequestNextEvent.AddListener(Next);
         DialogDisplayer.QuestionChosenEvent.AddListener(NextAnswer);
+        TAR.StartReadingTextAssets();
     }
 
 
@@ -37,20 +44,27 @@ public class DialogSystem : MonoBehaviour
     {
         NPC = npc;
 
+        DialogDisplayer.SetVisible();
+
         Adventure = new Queue<string>();
         QuestionSets = new Queue<QuestionSet>();
 
+        DialogDisplayer.RequestNextEvent.RemoveAllListeners();
+        DialogDisplayer.RequestNextEvent.AddListener(delegate { Next(isLeaving); });
+
         if (!isLeaving)
         {
-            StoryArc = TextAssets.GetRandomAdventure();
+            StoryArc = TAR.TextAssets.GetRandomAdventure();
             GenerateGreeting();
             GenerateAdventure();
             GenerateQuestions();
+            Next(isLeaving);
         }
         else
         {
-            //Display farewell and leave#
-            EndDialog();
+            NPC.StayDuration = Random.Range(-GameClock.MaxStayDuration, 0);
+            Adventure.Enqueue("ciao bella!");
+            Next(isLeaving);
         }
     }
 
@@ -62,6 +76,8 @@ public class DialogSystem : MonoBehaviour
         if (pre.Need != Need.None)
         {
             NPC.Needs.Add(pre.Need);
+            if (pre.Need == Need.Tired)
+                NPC.StayDuration = Random.Range(1, GameClock.MaxStayDuration);
         }
 
         Adventure.Enqueue(pre.Text);
@@ -71,6 +87,8 @@ public class DialogSystem : MonoBehaviour
         if (main.Need != Need.None)
         {
             NPC.Needs.Add(main.Need);
+            if (main.Need == Need.Tired)
+                NPC.StayDuration = Random.Range(1, GameClock.MaxStayDuration);
         }
 
         Adventure.Enqueue(main.Text);
@@ -81,6 +99,8 @@ public class DialogSystem : MonoBehaviour
         if (post.Need != Need.None)
         {
             NPC.Needs.Add(post.Need);
+            if (post.Need == Need.Tired)
+                NPC.StayDuration = Random.Range(1, GameClock.MaxStayDuration);
         }
 
         Adventure.Enqueue(post.Text);
@@ -89,14 +109,14 @@ public class DialogSystem : MonoBehaviour
 
     public void GenerateGreeting()
     {
-        int index = Random.Range(0, TextAssets.Greetings.Count);
+        int index = Random.Range(0, TAR.TextAssets.Greetings.Count);
 
-        while (TextAssets.Greetings[index].Personality != NPC.Character)
+        while (TAR.TextAssets.Greetings[index].Personality != NPC.Character)
         {
-            index = ++index % TextAssets.Greetings.Count;
+            index = (index + 1) % TAR.TextAssets.Greetings.Count;
         }
 
-        Adventure.Enqueue(TextAssets.Greetings[index].Text);
+        Adventure.Enqueue(TAR.TextAssets.Greetings[index].Text);
     }
 
 
@@ -119,21 +139,21 @@ public class DialogSystem : MonoBehaviour
 
     private Question GetRandomQuestion(ReactionType type)
     {
-        int index = Random.Range(0, TextAssets.Questions.Count);
+        int index = Random.Range(0, TAR.TextAssets.Questions.Count);
 
-        while (TextAssets.Questions[index].Personality != NPC.Character)
+        while (TAR.TextAssets.Questions[index].Personality != NPC.Character)
         {
-            index = ++index % TextAssets.Questions.Count;
+            index = (index + 1) % TAR.TextAssets.Questions.Count;
         }
 
-        return TextAssets.Questions[index];
+        return TAR.TextAssets.Questions[index];
     }
 
 
     /// <summary>
     /// Tell the dialog system to do its next step.
     /// </summary>
-    public void Next()
+    public void Next(bool isLeaving)
     {
         if (Adventure.Count > 0)
         {
@@ -141,13 +161,13 @@ public class DialogSystem : MonoBehaviour
         }
         else
         {
-            if (QuestionSets.Count > 0 && NPC.ComfortLevel != 0)
+            if (QuestionSets.Count > 0 && (int)NPC.ComfortLevel != 0)
             {
                 NextQuestions();
             }
             else
             {
-                EndDialog();
+                EndDialog(isLeaving);
             }
         }
     }
@@ -177,6 +197,8 @@ public class DialogSystem : MonoBehaviour
     /// </param>
     public void NextAnswer(int questionIndex)
     {
+        Debug.Log(questionIndex);
+        Debug.Log(QuestionSets.Peek().Questions.Count);
         //The question chosen by the player
         Question chosen = QuestionSets.Dequeue().Questions[questionIndex];
 
@@ -190,6 +212,8 @@ public class DialogSystem : MonoBehaviour
         if (answer.Need != Need.None)
         {
             NPC.AddSpecialNeed(answer.Need);
+            if (answer.Need == Need.Tired)
+                NPC.StayDuration = Random.Range(0, GameClock.MaxStayDuration);
         }
 
         //Make the NPC react to the question:
@@ -199,13 +223,13 @@ public class DialogSystem : MonoBehaviour
                 NPC.ComfortLevel -= 1f;
                 break;
             case ReactionType.Okay:
-                NPC.ComfortLevel -= 0.5;
+                NPC.ComfortLevel -= 0.5f;
                 break;
             default:
                 break;
         }
 
-        if (NPC.ComfortLevel == 0 || QuestionSets.Count == 0)
+        if ((int) NPC.ComfortLevel == 0 || QuestionSets.Count == 0)
         {
             //Only show the answer. The dilog will end when "..." is pressed and Next ist executed.
             DialogDisplayer.DisplaySnippet(answer.Text);
@@ -218,9 +242,13 @@ public class DialogSystem : MonoBehaviour
     }
 
 
-    private void EndDialog()
+    private void EndDialog(bool isLeaving)
     {
-        ConversationOverEvent.Invoke(NPC);
+        var cod = new ConversationOverData();
+        cod.npc = NPC;
+        cod.isLeaving = isLeaving;
+        ConversationOverEvent.Invoke(cod);
+        DialogDisplayer.SetInvisible();
     }
 
 }
