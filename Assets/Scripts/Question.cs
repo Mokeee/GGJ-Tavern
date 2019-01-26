@@ -46,4 +46,10 @@ public class Question
         return Answers[reaction];
     }
 
+
+    public Snippet GetAnswerForPersonality(Personality character)
+    {
+        return GetAnswer(GetReactionFor(character));
+    }
+
 }

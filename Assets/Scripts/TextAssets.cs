@@ -12,6 +12,8 @@ public class TextAssets
 	public List<Adventure> Adventures;
 	[SerializeField]
 	public List<Greeting> Greetings;
+    [SerializeField]
+    public List<Snippet> Farewells;
 
 	/// <summary>
 	/// Returns the answer at the given index.
@@ -21,4 +23,21 @@ public class TextAssets
 	{
 
 	}
+
+    public Adventure GetRandomAdventure()
+    {
+        return Adventures[Random.Range(0, Adventures.Count)];
+    }
+
+
+    public Greeting GetRandomGreeting()
+    {
+        return Greetings[Random.Range(0, Greetings.Count)];
+    }
+
+
+    public Snippet GetRandomFarewell()
+    {
+        return Farewells[Random.Range(0, Farewells.Count)];
+    }
 }
