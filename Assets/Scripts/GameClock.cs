@@ -109,6 +109,7 @@ public class GameClock : MonoBehaviour
     {
         Cod.npc = npc;
         Cod.isLeaving = isLeaving;
+        pool.NPCVisuals[npc.id].SetActive(true);
         DialogSystem.StartDialog(npc, isLeaving);
     }
 
@@ -119,7 +120,6 @@ public class GameClock : MonoBehaviour
     /// <param name="isLeaving">Is leaving.</param>
     public void HandleEndOfDialog(ConversationOverData cod)
     {
-        Debug.Log("HI");
         if (cod.isLeaving)
         {
             pool.AnnihilateNPC(cod.npc.id);
@@ -178,6 +178,7 @@ public class GameClock : MonoBehaviour
     /// </summary>
     public void HandleEndOfFullfillment()
     {
+        pool.NPCVisuals[Cod.npc.id].SetActive(false);
         Proceed();
     }
 

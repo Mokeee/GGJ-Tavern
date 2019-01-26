@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class NPCPool : MonoBehaviour
 {
-    [SerializeField]
     public List<NPC> NPCs;
     public List<bool> ActiveNPCs;
+    public List<GameObject> NPCVisuals;
+    public Transform VisualsParent;
+
+    public CharacterVisualsGenerator CVG;
 
     private void Start()
     {
         NPCs = new List<NPC>();
+        NPCVisuals = new List<GameObject>();
     }
 
     /// <summary>
@@ -42,6 +46,9 @@ public class NPCPool : MonoBehaviour
             npc.id = id;
             NPCs.Add(npc);
             ActiveNPCs.Add(true);
+            CVG.GeneratePrefab(VisualsParent);
+            NPCVisuals.Add(VisualsParent.GetChild(VisualsParent.childCount - 1).gameObject);
+            NPCVisuals[NPCVisuals.Count - 1].GetComponent<NPCDisplayer>().GenerateVisuals();
         }
 
         return npc;
