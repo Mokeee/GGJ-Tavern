@@ -15,4 +15,23 @@ public class DialogDisplayer : MonoBehaviour
     {
         
     }
+
+
+    public void DisplaySnippet(string snippet)
+    {
+
+    }
+
+
+    public void DisplayQuestions(List<string> questions)
+    {
+
+    }
+
+
+    public void DisplayAnswer(string answer, List<string> questions)
+    {
+
+    }
+
 }
