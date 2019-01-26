@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NPCPool : MonoBehaviour
 {
+    [SerializeField]
     public List<NPC> NPCs;
     public List<bool> ActiveNPCs;
 
@@ -25,17 +26,19 @@ public class NPCPool : MonoBehaviour
 
         while(id < ActiveNPCs.Count && !NPCSet)
         {
-            NPCSet = ActiveNPCs[id];
+            NPCSet = !ActiveNPCs[id];
             id++;
         }
 
         if (NPCSet)
         {
+            Debug.Log("Registered on pooled object");
             npc.id = id - 1;
             NPCs[id - 1] = npc;
         }
         else
         {
+            Debug.Log("Registered New");
             npc.id = id;
             NPCs.Add(npc);
             ActiveNPCs.Add(true);
@@ -95,6 +98,6 @@ public class NPCPool : MonoBehaviour
 
     public void UpdateNPC(NPC npc)
     {
-        
+        NPCs[npc.id] = npc;
     }
 }

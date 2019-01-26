@@ -9,6 +9,7 @@ public class InventoryDisplayer : MonoBehaviour
     public GameObject ItemPrefab;
     public GameObject InventoryParent;
     public TextMeshProUGUI MoneyText;
+    public Button CloseInventoryButton;
 
     public InventorySystem InventorySystem;
 
@@ -34,6 +35,25 @@ public class InventoryDisplayer : MonoBehaviour
         }
     }
 
+    public void ShowInventoryForSelling()
+    {
+        if (InventoryParent.transform.childCount == 1)
+        {
+            Start();
+        }
+        for (int i = 1; i < InventoryParent.transform.childCount; i++)
+        {
+            var displayer = InventoryParent.transform.GetChild(i).GetComponent<ItemDisplayer>();
+            displayer.ActionButton.onClick.RemoveAllListeners();
+            displayer.ActionButton.onClick.AddListener(() => { InventorySystem.SellItem(displayer.Name.text); UpdateInventory(); });
+            displayer.ActionButton.transform.GetChild(0).GetComponent<Text>().text = "Sell";
+        }
+
+        CloseInventoryButton.onClick.RemoveAllListeners();
+        CloseInventoryButton.onClick.AddListener(() => InventorySystem.EndFullfillment());
+        CloseInventoryButton.transform.GetChild(0).GetComponent<Text>().text = "Stop Selling";
+    }
+
     public void ShowInventoryForResupply()
     {
         if(InventoryParent.transform.childCount == 1)
@@ -43,9 +63,14 @@ public class InventoryDisplayer : MonoBehaviour
         for (int i = 1; i < InventoryParent.transform.childCount; i++)
         {
             var displayer = InventoryParent.transform.GetChild(i).GetComponent<ItemDisplayer>();
+            displayer.ActionButton.onClick.RemoveAllListeners();
             displayer.ActionButton.onClick.AddListener(() => { InventorySystem.BuyItem(displayer.Name.text); UpdateInventory(); });
             displayer.ActionButton.transform.GetChild(0).GetComponent<Text>().text = "Resupply";
         }
+
+        CloseInventoryButton.onClick.RemoveAllListeners();
+        CloseInventoryButton.onClick.AddListener(() => InventorySystem.EndResupply());
+        CloseInventoryButton.transform.GetChild(0).GetComponent<Text>().text = "End Resupply";
     }
 
     public void UpdateInventory()
@@ -55,8 +80,6 @@ public class InventoryDisplayer : MonoBehaviour
         int index = 1;
         foreach (var item in InventorySystem.Inventory.Items)
         {
-            Debug.Log("Update Loop: " + (index - 1));
-            Debug.Log(item.InStockCount);
             var displayer = InventoryParent.transform.GetChild(index).GetComponent<ItemDisplayer>();
             displayer.Name.text = item.Name;
             displayer.StockCountText.text = item.InStockCount.ToString();

@@ -13,7 +13,7 @@ public class GameClock : MonoBehaviour
     public InventorySystem InventorySystem;
     public NPCPool pool;
 
-    int Day;
+    public int Day;
     int CustomerCount;
 
     List<List<NPC>> CustomersOfDay;
@@ -24,9 +24,9 @@ public class GameClock : MonoBehaviour
     {
         Day = 0;
 
-        GetAllCustomersForNewDay();
         InventorySystem.EndedFullfillment.AddListener(() => { HandleEndOfFullfillment(); });
         InventorySystem.EndedResupply.AddListener(() => { EndDay(); });
+        StartResupply();
     }
 
     /// <summary>
@@ -48,6 +48,7 @@ public class GameClock : MonoBehaviour
             CustomersOfDay.Add(GenerateRandomNewCustomers());
 
         CustomerCount += CustomersOfDay[2].Count;
+        Debug.Log(CustomerCount);
 
         Proceed();
     }

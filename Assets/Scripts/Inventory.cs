@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public const float SATISFACTIONINCREASE = 0.33f;
     public InventoryItem[] Items;
     public float Money = 100;
 
@@ -57,9 +58,15 @@ public class Inventory : MonoBehaviour
                     DecreaseStockItemByName(name);
                     cost = Items[i].Price;
                     if (npc.Needs.Contains(Items[i].Need))
+                    {
                         npc.Needs.Remove(Items[i].Need);
+                        npc.ComfortLevel += SATISFACTIONINCREASE;
+                    }
                     else if (npc.SpecialNeeds.Contains(Items[i].Need))
-                        npc.Needs.Remove(Items[i].Need);
+                    {
+                        npc.SpecialNeeds.Remove(Items[i].Need);
+                        npc.ComfortLevel += SATISFACTIONINCREASE;
+                    }
                 }
             }
         }

@@ -28,7 +28,6 @@ public class InventorySystem : MonoBehaviour
     public void SellItem(string name)
     {
         NPC.DuePayment += Inventory.SellItemByName(name,ref NPC);
-
     }
 
     public void BuyItem(string name)
@@ -36,11 +35,13 @@ public class InventorySystem : MonoBehaviour
         Inventory.PurchaseStockIncreaseByName(name);
     }
 
-    public void EndFullFillment()
+    public void EndFullfillment()
     {
         if ((!NPC.Needs.Contains(Need.Tired) && !NPC.SpecialNeeds.Contains(Need.Tired)) && NPC.StayDuration <= 0)
         {
             Inventory.Money += NPC.DuePayment * NPC.ComfortLevel;
+            Debug.Log(NPC.DuePayment);
+            Debug.Log(NPC.ComfortLevel);
             pool.UpdateNPC(NPC);
         }
         NPC = null;

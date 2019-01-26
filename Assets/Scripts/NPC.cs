@@ -30,8 +30,8 @@ public class NPC
     public List<Need> Needs;
     public List<Need> SpecialNeeds;
 
-    public float ComfortLevel { get; }
-    public Personality Character { get; }
+    public float ComfortLevel;
+    public Personality Character;
 
     public int StayDuration = 0;
     public int FutureStayDuration = 0;
@@ -44,6 +44,7 @@ public class NPC
         Needs = new List<Need>();
         SpecialNeeds = new List<Need>();
         Character = character;
+        ComfortLevel = 1.0f;
     }
 
 
