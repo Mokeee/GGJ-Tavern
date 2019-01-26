@@ -5,7 +5,17 @@ using UnityEngine;
 public enum Need
 {
     None,
-	Hunger
+    Hunger,
+    Tired,
+    Injured,
+    Poisoned,
+    Thirsty,
+    DamagedHelmet,
+    DamagedChestPiece,
+    DamagedWeapon,
+    RechargeMagic,
+    MakeAPotion,
+    BuySupplies
 }
 
 public enum Personality
@@ -17,23 +27,30 @@ public enum Personality
 
 public class NPC
 {
-    private LinkedList<Need> Needs { get; }
-    private LinkedList<Need> SpecialNeeds { get; }
+    public List<Need> Needs;
+    public List<Need> SpecialNeeds;
 
-    private float ComfortLevel { get; }
-    private Personality Character { get; }
+    public float ComfortLevel;
+    public Personality Character;
 
-    public NPC(Personality character, LinkedList<Need> needs)
+    public int StayDuration = 0;
+    public int FutureStayDuration = 0;
+    public int id;
+
+    public int DuePayment;
+
+    public NPC(Personality character)
     {
-        this.Needs = needs;
-        this.SpecialNeeds = new LinkedList<Need>();
-        this.Character = character;
+        Needs = new List<Need>();
+        SpecialNeeds = new List<Need>();
+        Character = character;
+        ComfortLevel = 1.0f;
     }
 
 
     public void AddSpecialNeed(Need need)
     {
-        SpecialNeeds.AddLast(need);
+        SpecialNeeds.Add(need);
     }
 
 }
