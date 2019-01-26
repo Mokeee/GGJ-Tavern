@@ -5,8 +5,17 @@ using UnityEngine;
 public enum Need
 {
     None,
-	Hunger,
-    Sleep
+    Hunger,
+    Tired,
+    Injured,
+    Poisoned,
+    Thirsty,
+    DamagedHelmet,
+    DamagedChestPiece,
+    DamagedWeapon,
+    RechargeMagic,
+    MakeAPotion,
+    BuySupplies
 }
 
 public enum Personality

@@ -112,9 +112,9 @@ public class GameClock : MonoBehaviour
     /// <param name="isLeaving">Is leaving.</param>
     public void HandleEndOfDialog(NPC npc, bool isLeaving)
     {
-        if (isLeaving)
-            Proceed();
-        else
+        //if (isLeaving)
+        //    Proceed();
+        //else
             StartFullfillment(npc);
     }
 

@@ -7,6 +7,11 @@ public class NPCPool : MonoBehaviour
     public List<NPC> NPCs;
     public List<bool> ActiveNPCs;
 
+    private void Start()
+    {
+        NPCs = new List<NPC>();
+    }
+
     /// <summary>
     /// Registers the npc.
     /// </summary>

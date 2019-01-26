@@ -38,7 +38,7 @@ public class InventorySystem : MonoBehaviour
 
     public void EndFullFillment()
     {
-        if ((!NPC.Needs.Contains(Need.Sleep) && !NPC.SpecialNeeds.Contains(Need.Sleep)) && NPC.StayDuration <= 0)
+        if ((!NPC.Needs.Contains(Need.Tired) && !NPC.SpecialNeeds.Contains(Need.Tired)) && NPC.StayDuration <= 0)
         {
             Inventory.Money += NPC.DuePayment * NPC.ComfortLevel;
             pool.UpdateNPC(NPC);

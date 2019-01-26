@@ -4,29 +4,37 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public InventoryItem[] items;
-    public float Money;
+    public InventoryItem[] Items;
+    public float Money = 100;
+
+    private void Awake()
+    {
+        for(int i = 0; i < Items.Length; i++)
+        {
+            Items[i].InStockCount = 0;
+        }
+    }
 
     public void SetItemByName(InventoryItem item, string name)
     {
-        for(int i = 0; i < items.Length; i++)
+        for(int i = 0; i < Items.Length; i++)
         {
-            if(items[i].name.Equals(name))
+            if(Items[i].name.Equals(name))
             {
-                items[i] = item;
+                Items[i] = item;
             }
         }
     }
 
     public void PurchaseStockIncreaseByName(string name)
     {
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < Items.Length; i++)
         {
-            if (items[i].name.Equals(name))
+            if (Items[i].name.Equals(name))
             {
-                int cost = items[i].Price;
+                int cost = Items[i].Price;
 
-                if (cost < Money)
+                if (cost <= Money)
                 {
                     IncreaseStockItemByName(name);
                     Money -= cost;
@@ -40,18 +48,18 @@ public class Inventory : MonoBehaviour
     {
         int cost = 0;
 
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < Items.Length; i++)
         {
-            if (items[i].name.Equals(name))
+            if (Items[i].name.Equals(name))
             {
-                if (items[i].InStockCount > 0)
+                if (Items[i].InStockCount > 0)
                 {
                     DecreaseStockItemByName(name);
-                    cost = items[i].Price;
-                    if (npc.Needs.Contains(items[i].Need))
-                        npc.Needs.Remove(items[i].Need);
-                    else if (npc.SpecialNeeds.Contains(items[i].Need))
-                        npc.Needs.Remove(items[i].Need);
+                    cost = Items[i].Price;
+                    if (npc.Needs.Contains(Items[i].Need))
+                        npc.Needs.Remove(Items[i].Need);
+                    else if (npc.SpecialNeeds.Contains(Items[i].Need))
+                        npc.Needs.Remove(Items[i].Need);
                 }
             }
         }
@@ -61,22 +69,23 @@ public class Inventory : MonoBehaviour
 
     void IncreaseStockItemByName(string name)
     {
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < Items.Length; i++)
         {
-            if (items[i].name.Equals(name))
+            if (Items[i].name.Equals(name))
             {
-                items[i].InStockCount++;
+                Debug.Log("increased: " + name);
+                Items[i].InStockCount++;
             }
         }
     }
 
     void DecreaseStockItemByName(string name)
     {
-        for (int i = 0; i < items.Length; i++)
+        for (int i = 0; i < Items.Length; i++)
         {
-            if (items[i].name.Equals(name))
+            if (Items[i].name.Equals(name))
             {
-                items[i].InStockCount--;
+                Items[i].InStockCount--;
             }
         }
     }
