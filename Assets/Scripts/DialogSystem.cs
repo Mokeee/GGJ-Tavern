@@ -26,6 +26,13 @@ public class DialogSystem : MonoBehaviour
     private Snippet Farewell;
 
 
+    public void Start()
+    {
+        DialogDisplayer.RequestNextEvent.AddListener(Next);
+        DialogDisplayer.QuestionChosenEvent.AddListener(NextAnswer);
+    }
+
+
     public void StartDialog(NPC npc, bool isLeaving)
     {
         NPC = npc;
