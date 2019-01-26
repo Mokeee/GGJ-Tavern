@@ -6,8 +6,10 @@ using UnityEngine.Events;
 
 public class ConversationOverEvent : UnityEvent<NPC> { }
 
-public class DialogSystem
+public class DialogSystem : MonoBehaviour
 {
+    public DialogDisplayer DialogDisplayer;
+
     public ConversationOverEvent ConversationOverEvent;
 
     private int MaxQuestions = 3;
@@ -31,7 +33,7 @@ public class DialogSystem
         Adventure = new Queue<string>();
         QuestionSets = new Queue<QuestionSet>();
 
-        if (isLeaving)
+        if (!isLeaving)
         {
             StoryArc = TextAssets.GetRandomAdventure();
             GenerateGreeting();
@@ -122,23 +124,40 @@ public class DialogSystem
 
 
     /// <summary>
-    /// Reqeuest the next adventure snippet
+    /// Tell the dialog system to do its next step.
     /// </summary>
-    public void NextSnippet()
+    public void Next()
     {
-        if (NPC.ComfortLevel == 0f)
+        if (Adventure.Count > 0)
         {
-            EndDialog();
-        }
-
-        if (Adventure.Count != 0)
-        {
-            GUIManager.Instance.DisplaySnippet(Adventure.Dequeue().Text);
+            NextSnippet();
         }
         else
         {
-            EndDialog();
+            if (QuestionSets.Count > 0 && NPC.ComfortLevel != 0)
+            {
+                NextQuestions();
+            }
+            else
+            {
+                EndDialog();
+            }
         }
+    }
+
+
+    /// <summary>
+    /// Reqeuest the next adventure snippet
+    /// </summary>
+    private void NextSnippet()
+    {
+        DialogDisplayer.DisplaySnippet(Adventure.Dequeue());
+    }
+
+
+    private void NextQuestions()
+    {
+        DialogDisplayer.DisplayQuestions(QuestionSets.Peek().ToStringList());
     }
 
 
@@ -149,7 +168,7 @@ public class DialogSystem
     /// <param name="questionIndex">
     /// The index of the chosen question.
     /// </param>
-    public void PassQuestionChoice(int questionIndex)
+    public void NextAnswer(int questionIndex)
     {
         //The question chosen by the player
         Question chosen = QuestionSets.Dequeue().Questions[questionIndex];
@@ -159,9 +178,6 @@ public class DialogSystem
 
         //The answer that our npc would give to the chosen question.
         Snippet answer = chosen.GetAnswer(reaction);
-
-        //Take the matching reponse to the chosen question and discard the question.
-        GUIManager.Instance.DisplaySnippet(answer.Text);
 
         //If the answer contains a special need, add it to the NPC.
         if (answer.Need != Need.None)
@@ -181,13 +197,23 @@ public class DialogSystem
             default:
                 break;
         }
+
+        if (NPC.ComfortLevel == 0 || QuestionSets.Count == 0)
+        {
+            //Only show the answer. The dilog will end when "..." is pressed and Next ist executed.
+            DialogDisplayer.DisplaySnippet(answer.Text);
+        }
+        else
+        {
+            //Take the matching reponse to the chosen question and discard the question. Also display the next questions.
+            DialogDisplayer.DisplayAnswer(answer.Text, QuestionSets.Peek().ToStringList());
+        }
     }
 
 
     private void EndDialog()
     {
         ConversationOverEvent.Invoke(NPC);
-        GUIManager.Instance.HideDialog();
     }
 
 }

@@ -30,4 +30,17 @@ public class QuestionSet
         Questions[b] = temp;
     }
 
+
+    public List<string> ToStringList()
+    {
+        List<string> list = new List<string>();
+
+        for (int i = 0; i < Questions.Count; ++i)
+        {
+            list.Add(Questions[i].Text);
+        }
+
+        return list;
+    }
+
 }
