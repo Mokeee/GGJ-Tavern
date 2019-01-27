@@ -78,13 +78,13 @@ public class InventoryDisplayer : MonoBehaviour
             var displayer = InventoryParent.transform.GetChild(i).GetComponent<ItemDisplayer>();
             displayer.ActionButton.onClick.RemoveAllListeners();
             displayer.ActionButton.onClick.AddListener(() => { InventorySystem.BuyItem(displayer.Name.text); UpdateInventory(); });
-            displayer.ActionButton.transform.GetChild(0).GetComponent<Text>().text = "Resupply";
+            displayer.ActionButton.transform.GetChild(0).GetComponent<Text>().text = "Restock";
             displayer.ActionButton.gameObject.SetActive(true);
         }
 
         CloseInventoryButton.onClick.RemoveAllListeners();
         CloseInventoryButton.onClick.AddListener(() => InventorySystem.EndResupply());
-        CloseInventoryButton.transform.GetChild(0).GetComponent<Text>().text = "End Resupply";
+        CloseInventoryButton.transform.GetChild(0).GetComponent<Text>().text = "End Restocking";
 
         StopAllCoroutines();
         StartCoroutine(MoveIn());

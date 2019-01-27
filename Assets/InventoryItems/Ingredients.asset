@@ -16,4 +16,4 @@ MonoBehaviour:
   Name: Ingredients
   InStockCount: 0
   Need: 10
-  Price: 100
+  Price: 5

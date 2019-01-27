@@ -38,6 +38,10 @@ public class SoundManager : MonoBehaviour
         {
             sound.SetVolume(volume);
         }
+        foreach (var sound in Background)
+        {
+            sound.SetVolume(volume);
+        }
     }
 
     public void PlayerEntry()

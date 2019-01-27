@@ -16,4 +16,4 @@ MonoBehaviour:
   Name: Mana Potion
   InStockCount: 0
   Need: 9
-  Price: 100
+  Price: 5
