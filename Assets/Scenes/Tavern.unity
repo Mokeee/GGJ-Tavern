@@ -3104,6 +3104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1631163675}
   - component: {fileID: 1631163674}
+  - component: {fileID: 1631163676}
   m_Layer: 0
   m_Name: Candle
   m_TagString: Untagged
@@ -3173,6 +3174,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1631163676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631163673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217f95ee964bf4a76906e03fcd82d2a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Light: {fileID: 661826117}
+  Flame: {fileID: 1156166652}
+  Amplitude: 0.1
+  Frequency: 1
+  Weights: {x: 1, y: 1, z: 1}
 --- !u!1 &1716418443
 GameObject:
   m_ObjectHideFlags: 0
