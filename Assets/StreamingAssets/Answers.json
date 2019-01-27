@@ -1,16 +1,246 @@
 {
 	"answers": [
 		{
-			"text": "Here goes your text.",
+			"text": "It is none of your business what my lady is doing.",
 			"need": "0"
 		},
 		{
-			"text": "Here goes your second text.",
-			"need": "1"
+			"text": "Uhm..She is doing fine I guess",
+			"need": "0"
 		},
 		{
-			"text": "Here goes your third text.",
+			"text": "She is doing lovely thanks for asking.",
+			"need": "0"
+		},
+		{
+			"text": "He.. uhm.. I wish the prince would take over already.",
+			"need": "0"
+		},
+		{
+			"text": "He does his best.",
+			"need": "0"
+		},
+		{
+			"text": "Our King is a paragon of justice that rules fair and just",
+			"need": "0"
+		},
+		{
+			"text": "I Saw him fight in the Old War once",
+			"need": "0"
+		},
+		{
+			"text": "I.. I don’t really like him, His beard annoys me",
+			"need": "0"
+		},
+		{
+			"text": "He and I were in school together!",
+			"need": "0"
+		},
+		{
+			"text": "That’s none of your business! ",
+			"need": "0"
+		},
+		{
+			"text": "Why.. do you care?",
+			"need": "0"
+		},
+		{
+			"text": "15 years my friend",
+			"need": "0"
+		},
+		{
+			"text": "No, It’s the adventuring life for me",
+			"need": "0"
+		},
+		{
+			"text": "Yes.. One boy and a Girl ",
+			"need": "0"
+		},
+		{
+			"text": "Yes and my boy will be the greatest Knight in the lands",
+			"need": "0"
+		},
+		{
+			"text": "There is no such thing, Don’t spread lies ",
+			"need": "0"
+		},
+		{
+			"text": "I have heard of it, But getting in is the hard part",
+			"need": "0"
+		},
+		{
+			"text": "I.. I have heard of it and it was quite large inside lots of valuables",
+			"need": "0"
+		},
+		{
+			"text": "I have fought and nearly died to that creature",
+			"need": "0"
+		},
+		{
+			"text": "That’s way too dangerous. I wouldn’t dare to go near it",
+			"need": "0"
+		},
+		{
+			"text": "It is my nemesis and I will see him defeated",
+			"need": "0"
+		},
+		{
+			"text": "I am scared of no invader and will defeat the enemy",
+			"need": "0"
+		},
+		{
+			"text": "I hope they will just stay there, I’m in no mood for a war ",
+			"need": "0"
+		},
+		{
+			"text": "That just means more work for us ",
+			"need": "0"
+		},
+		{
+			"text": "I wouldn’t even know what to say to her",
+			"need": "0"
+		},
+		{
+			"text": "I bet she is really powerfull",
+			"need": "0"
+		},
+		{
+			"text": "Alas, I have a new quest",
+			"need": "0"
+		},
+		{
+			"text": "I Don’t like horses they make too much noise",
+			"need": "0"
+		},
+		{
+			"text": "She is a trusty girl ",
+			"need": "0"
+		},
+		{
+			"text": "My horse Is only the strongest thoroughbred horse that money can buy",
+			"need": "0"
+		},
+		{
+			"text": "Tavern girls don’t interest me, I need a hero like me",
+			"need": "0"
+		},
+		{
+			"text": "I am a married man Innkeep, I have no eyes for her ",
+			"need": "0"
+		},
+		{
+			"text": "What!... Who.. Yeah she is beautiful ",
+			"need": "0"
+		},
+		{
+			"text": "Yeah.. I hate it. Im not a fan of the dark ",
+			"need": "0"
+		},
+		{
+			"text": "The dark does not instill fear in me",
+			"need": "0"
+		},
+		{
+			"text": "Things that bump in the night are my quarry forever",
+			"need": "0"
+		},
+		{
+			"text": "Tattoos are for criminals but they suit you ",
+			"need": "0"
+		},
+		{
+			"text": "Uh.. They’re cool I guess. ",
+			"need": "0"
+		},
+		{
+			"text": "They’re cool what do you think of mine?",
+			"need": "0"
+		},
+		{
+			"text": "No stop playing these games. ",
+			"need": "0"
+		},
+		{
+			"text": "I’d rather not I’d have to talk to so many people. ",
+			"need": "0"
+		},
+		{
+			"text": "Yes, And I require your strongest potion ",
+			"need": "0"
+		},
+		{
+			"text": "You have to make money somehow ",
+			"need": "0"
+		},
+		{
+			"text": "It is what my family does.",
+			"need": "0"
+		},
+		{
+			"text": "It is my destiny! ",
+			"need": "0"
+		},
+		{
+			"text": "Do not speak of this imposter, The one true god is M’Coville",
+			"need": "0"
+		},
+		{
+			"text": "I have heard of him, A great mind ",
+			"need": "0"
+		},
+		{
+			"text": "I am already a devout believer ",
+			"need": "0"
+		},
+		{
+			"text": "I will never join them too much attention",
+			"need": "0"
+		},
+		{
+			"text": "Not anymore friend.",
+			"need": "0"
+		},
+		{
+			"text": "I was born to lead them",
+			"need": "0"
+		},
+		{
+			"text": "Dragons should roam free as long as they don’t harm anyone",
+			"need": "0"
+		},
+		{
+			"text": "I already have three, My daddy bought them for me",
+			"need": "0"
+		},
+		{
+			"text": " I could always use a new friend. ",
+			"need": "0"
+		},
+		{
+			"text": "Those knife-ears? I’d rather not.",
+			"need": "0"
+		},
+		{
+			"text": " I Don’t think I’d like it there very much. A place where the forest itself fights back no thank you.",
+			"need": "0"
+		},
+		{
+			"text": " Yes, They speak this very weird flowy language",
+			"need": "0"
+		},
+		{
+			"text": " Who? Like I’d concern myself with peasants ",
+			"need": "0"
+		},
+		{
+			"text": " No, Who?... Doesn’t ring a bell",
+			"need": "0"
+		},
+		{
+			"text": "Yeah, he’s the one that robbed a conclave of chromatic dragons. ",
 			"need": "0"
 		}
+
+
 	]
 }
