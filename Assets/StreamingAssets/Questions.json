@@ -58,47 +58,47 @@
 			{
 							"text": "It's a dark and stormy night isn't it?",
 							"personality": "1",
-							"answers": ["32","33","34"]
+							"answers": ["33","34","35"]
 			},
 			{
 							"text": "What do you think of my tattooes?",
 							"personality": "0",
-							"answers": ["35","36","37"]
+							"answers": ["36","37","38"]
 			},
 			{
 							"text": "Are you going into battle?",
 							"personality": "0",
-							"answers": ["38","39","40"]
+							"answers": ["39","40","41"]
 			},
 			{
 							"text": "How did you get into adventuring?",
 							"personality": "0",
-							"answers": ["41","42","43"]
+							"answers": ["42","43","44"]
 			},
 			{
 							"text": "Do you have a moment to talk about our lord and savior Ma'tt M'rcer",
 							"personality": "2",
-							"answers": ["44","45","46"]
+							"answers": ["45","46","47"]
 			},
 			{
 							"text": "Aren’t you part of the Preatorian Guard?",
 							"personality": "1",
-							"answers": ["47","48","49"]
+							"answers": ["48","49","50"]
 			},
 			{
 							"text": "So you want to buy a dragon?",
 							"personality": "2",
-							"answers": ["50","51","52"]
+							"answers": ["51","52","53"]
 			},
 			{
 							"text": "Have you been to the Elves yet?",
 							"personality": "0",
-							"answers": ["53","54","55"]
+							"answers": ["54","55","56"]
 			},
 			{
 							"text": "Have you heard of the great explorer Edrin Goldfond?",
 							"personality": "0",
-							"answers": ["56","57","58"]
+							"answers": ["57","58","59"]
 			}
 
 	]

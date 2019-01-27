@@ -20,7 +20,7 @@ public class AnswerData
 
 			snippets.Add(snippet);
 		}
-
+        Debug.Log(snippets.Count);
 		return snippets;
 	}
 }
@@ -49,6 +49,7 @@ public class QuestionData
 			for(int i = 0; i < 3; i++)
 			{
 				var reactionType = (i == 0) ? ReactionType.Annoying : (i == 1) ? ReactionType.Okay : ReactionType.Comforting;
+                Debug.Log(item.answers[i] + " : " + answers[item.answers[i]].Text);
 				question.Answers.Add(reactionType, answers[item.answers[i]]);
 			}
 
@@ -77,7 +78,7 @@ public class AdventureData
 
 	public List<Adventure> ConvertToAdventure()
 	{
-		var adventures = new List<Adventure>();
+		var adventuresData = new List<Adventure>();
 		var adventureItemsByID = new Dictionary<int, List<AdventureItem>>();
 
 		foreach (var item in this.adventures)
@@ -108,10 +109,10 @@ public class AdventureData
 				adventure.AdventureSnippetDictionary[item.type].Add(snippet);
 			}
 
-			adventures.Add(adventure);
+			adventuresData.Add(adventure);
 		}
 
-		return adventures;
+		return adventuresData;
 	}
 }
 

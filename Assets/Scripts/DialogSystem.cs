@@ -122,7 +122,7 @@ public class DialogSystem : MonoBehaviour
 
     private void GenerateQuestions()
     {
-        for (int i = 0; i < MaxQuestions; ++i)
+        for (int i = 0; i < MaxQuestions; i++)
         {
             Question annoying = GetRandomQuestion(ReactionType.Annoying);
             Question okay = GetRandomQuestion(ReactionType.Okay);
@@ -133,7 +133,6 @@ public class DialogSystem : MonoBehaviour
 
             QuestionSets.Enqueue(questionSet);
         }
-
     }
 
 
@@ -199,12 +198,18 @@ public class DialogSystem : MonoBehaviour
     {
         //The question chosen by the player
         Question chosen = QuestionSets.Dequeue().Questions[questionIndex];
+        Debug.Log(chosen.Text);
+        Debug.Log(chosen.GetAnswer(ReactionType.Annoying).Text);
+        Debug.Log(chosen.GetAnswer(ReactionType.Okay).Text);
+        Debug.Log(chosen.GetAnswer(ReactionType.Comforting).Text);
 
         //The reaction the question would provoke
         ReactionType reaction = chosen.GetReactionFor(NPC.Character);
+        Debug.Log(reaction);
 
         //The answer that our npc would give to the chosen question.
         Snippet answer = chosen.GetAnswer(reaction);
+        Debug.Log(answer.Text);
 
         //If the answer contains a special need, add it to the NPC.
         if (answer.Need != Need.None)
