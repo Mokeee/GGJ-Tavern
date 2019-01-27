@@ -37,7 +37,7 @@ public class InventorySystem : MonoBehaviour
 
     public void EndFullfillment()
     {
-        Inventory.Money += NPC.DuePayment * NPC.ComfortLevel;
+        Inventory.Money += NPC.DuePayment * Mathf.Clamp(NPC.ComfortLevel, 0, 2.0f);
         Debug.Log(NPC.DuePayment);
         Debug.Log(NPC.ComfortLevel);
 
@@ -60,7 +60,7 @@ public class InventorySystem : MonoBehaviour
             }
         }
 
-        pool.NPCVisuals[NPC.ID].SetActive(false);
+        pool.HideNPC(NPC);
 
         pool.UpdateNPC(NPC);
         NPC = null;

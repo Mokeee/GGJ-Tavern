@@ -206,10 +206,15 @@ public class GameClock : MonoBehaviour
     /// </summary>
     public void HandleEndOfFullfillment()
     {
-        pool.HideNPC(NextCustomer);
-
-        GenerateNextCustomer();
-        ReadyToProceedEvent.Invoke(NextCustomer.ID);
+        if (CustomerCount > 0)
+        {
+            GenerateNextCustomer();
+            ReadyToProceedEvent.Invoke(NextCustomer.ID);
+        }
+        else
+        {
+            StartResupply();
+        }
     }
 
     /// <summary>

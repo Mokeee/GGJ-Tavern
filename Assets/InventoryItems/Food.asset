@@ -16,4 +16,4 @@ MonoBehaviour:
   Name: Food
   InStockCount: 0
   Need: 1
-  Price: 10
+  Price: 5
