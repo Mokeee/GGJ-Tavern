@@ -126,6 +126,7 @@ public class GameClock : MonoBehaviour
         Cod.npc = npc;
         Cod.isLeaving = isLeaving;
         pool.NPCVisuals[npc.ID].SetActive(true);
+        Debug.Log("Set " + npc.ID + " to visible.");
         DialogSystem.StartDialog(npc, isLeaving);
     }
 

@@ -14,17 +14,22 @@ public class NPCDisplayer : MonoBehaviour
     public void ApplySprites(Sprite head, Sprite torso)
     {
         HeadImage.overrideSprite = head;
-        TorsoImage.overrideSprite = torso;
+
+        if (Race != Race.Halfling)
+        {
+            TorsoImage.overrideSprite = torso;
+        }
     }
 
     public void GenerateVisuals()
     {
         gameObject.SetActive(false);
-
-        string path = "Sprites/" + Race.ToString() + " " + Profession.ToString() + " Torso";
+        var path = "Sprites/" + Race.ToString() + " " + Profession.ToString() + " Torso";
+        Debug.Log(path);
         var torsoSprite = Resources.Load<Sprite>(path);
-        path = "Sprites/" + Race.ToString() + " " + Profession.ToString() + " Head " + Random.Range(1, 4);
+        path = "Sprites/" + Race.ToString() + " " + Profession.ToString() + " Head " + Random.Range(0, 4);
         var headSprite = Resources.Load<Sprite>(path);
+        Debug.Log(path);
 
         ApplySprites(headSprite, torsoSprite);
     }
