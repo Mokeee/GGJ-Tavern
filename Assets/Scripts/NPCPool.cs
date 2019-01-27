@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NPCPool : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class NPCPool : MonoBehaviour
     public Transform VisualsParent;
 
     public CharacterVisualsGenerator CVG;
+
+    public UnityEvent NPCAnnihilatedEvent;
 
     private void Start()
     {
@@ -111,5 +114,6 @@ public class NPCPool : MonoBehaviour
     public void AnnihilateNPC(int id)
     {
         ActiveNPCs[id] = false;
+        NPCAnnihilatedEvent.Invoke();
     }
 }

@@ -8,10 +8,6 @@ public class NPCMover : MonoBehaviour
 
     public float Duration = 1;
 
-    public void Start()
-    {
-        MoveToTargetPosition();
-    }
 
     public void MoveToTargetPosition()
     {

@@ -149,6 +149,8 @@ MonoBehaviour:
   - {fileID: 563994704}
   - {fileID: 522831061}
   - {fileID: 1953280360}
+  CG: {fileID: 0}
+  Speed: 0
 --- !u!224 &174589614
 RectTransform:
   m_ObjectHideFlags: 0
@@ -905,10 +907,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Items:
-  - {fileID: 11400000, guid: c8082a2cd495b4349932205fbac40d77, type: 2}
-  - {fileID: 11400000, guid: 81fb63f2be9634aa9b26c2b3135a4a9f, type: 2}
-  - {fileID: 11400000, guid: 1099b665d96a948af9a0dc9a2fa7ff0a, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   Money: 100
+  SatisfiedCustomers: 0
 --- !u!114 &593351972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,7 +928,15 @@ MonoBehaviour:
   DialogSystem: {fileID: 1550031673}
   InventorySystem: {fileID: 593351968}
   pool: {fileID: 593351969}
-  Day: 0
+  DayEndedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  WeekEndedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: ReportEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!81 &593351973
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1467,8 +1478,12 @@ MonoBehaviour:
     type: 3}
   InventoryParent: {fileID: 1275722753}
   MoneyText: {fileID: 239867573}
+  DaysText: {fileID: 0}
   CloseInventoryButton: {fileID: 857634811}
   InventorySystem: {fileID: 593351968}
+  StartY: 0
+  EndY: 0
+  Speed: 0
 --- !u!114 &1275722756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1755,6 +1770,122 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OrcPrefab: {fileID: 6795012685121715246, guid: 50b0ace7d098d4a67af1269221f3816a,
     type: 3}
+  HumanPrefab: {fileID: 0}
+  PigmanPrefab: {fileID: 0}
+  HalflingPrefab: {fileID: 0}
+--- !u!1 &1777928162
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1777928164}
+  - component: {fileID: 1777928163}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1777928163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777928162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 675b69bc779994bd28d3e21286a269ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sounds:
+  - name: bell
+    volume: 0.5
+    clip: {fileID: 8300000, guid: 711247a60965a4befa25f727f6a7571b, type: 3}
+    source: {fileID: 0}
+  - name: lyra
+    volume: 1
+    clip: {fileID: 8300000, guid: e465b715a283b432f91911450580a264, type: 3}
+    source: {fileID: 0}
+  - name: door_exit
+    volume: 1
+    clip: {fileID: 8300000, guid: eb3de2d1e8693426db68675d9d5813e5, type: 3}
+    source: {fileID: 0}
+  - name: door_enter
+    volume: 1
+    clip: {fileID: 8300000, guid: 620e1cc8b89544d1082962e44f0ccbfd, type: 3}
+    source: {fileID: 0}
+  - name: fiddle_1
+    volume: 1
+    clip: {fileID: 8300000, guid: a9ba0094636124ceda3071b1cd88c436, type: 3}
+    source: {fileID: 0}
+  - name: fiddle_2
+    volume: 1
+    clip: {fileID: 8300000, guid: 327390cfeca634aa4918b3ba6ec5c9b4, type: 3}
+    source: {fileID: 0}
+  - name: fiddle_hit_1
+    volume: 1
+    clip: {fileID: 8300000, guid: 28d39eca580074d45b03d4aeaeb2977d, type: 3}
+    source: {fileID: 0}
+  - name: fiddle_hit_2
+    volume: 1
+    clip: {fileID: 8300000, guid: f7f52b51092c340cb953319b25cba772, type: 3}
+    source: {fileID: 0}
+  - name: steps
+    volume: 1
+    clip: {fileID: 8300000, guid: ed490523c1df04fdb9effbfe1dc6f5b8, type: 3}
+    source: {fileID: 0}
+  - name: paper
+    volume: 1
+    clip: {fileID: 8300000, guid: fcaeea81f5e614da594ae0eb0d85bc34, type: 3}
+    source: {fileID: 0}
+  - name: pen
+    volume: 1
+    clip: {fileID: 8300000, guid: b77c3a605a5f14c4d845dc4b0f724ae2, type: 3}
+    source: {fileID: 0}
+  - name: tap_1
+    volume: 1
+    clip: {fileID: 8300000, guid: 1dcde995553194581a1ac47c06bd455c, type: 3}
+    source: {fileID: 0}
+  - name: tap_2
+    volume: 1
+    clip: {fileID: 8300000, guid: e0811859b95484ef0a84f0cb4b95fc42, type: 3}
+    source: {fileID: 0}
+  - name: tap_3
+    volume: 1
+    clip: {fileID: 8300000, guid: 001843327e0bb43fca24687f02950186, type: 3}
+    source: {fileID: 0}
+  Background:
+  - name: music
+    volume: 0.05
+    clip: {fileID: 8300000, guid: 9e3708f2f70e245faba3a1833f49144d, type: 3}
+    source: {fileID: 0}
+  - name: fire
+    volume: 0.05
+    clip: {fileID: 8300000, guid: 7486d899c3779446fb381739580add4f, type: 3}
+    source: {fileID: 0}
+  - name: walla
+    volume: 1
+    clip: {fileID: 8300000, guid: c508283f90f1f40bba26a466dab3e82e, type: 3}
+    source: {fileID: 0}
+--- !u!4 &1777928164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777928162}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 819.9197, y: 735.80524, z: -19.610224}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1799425651
 GameObject:
   m_ObjectHideFlags: 0
