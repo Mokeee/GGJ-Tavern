@@ -1,0 +1,105 @@
+{
+	"questions": [
+			{
+							"text": "So Friend How’s the wife?.",
+							"personality": "0",
+							"answers": ["0","1","2"]
+			},
+			{
+							"text": "Our king is doing great is he not?"
+							"personality": "1",
+							"answers": ["3","4","5"]
+			},
+			{
+							"text": "Have you met our great wizard Melf yet?"
+							"personality": "1",
+							"answers": ["6","7","8"]
+			},
+			{
+							"text": "For how long have you been an adventurer?"
+							"personality": "0",
+							"answers": ["9","10","11"]
+			},
+			{
+							"text": "You’ve got any kids?"
+							"personality": "1",
+							"answers": ["12","13","14"]
+			},
+			{
+							"text": "Have you heard of the secret dungeon underneath the castle"
+							"personality": "2",
+							"answers": ["15","16","17"]
+			},
+			{
+							"text": "Have you fought the Blade Warden?"
+							"personality": "1",
+							"answers": ["18","19","20"]
+			},
+			{
+							"text": "Have you heard? The Zadasi empire has stationed troops near the border"
+							"personality": "0",
+							"answers": ["21","22","23"]
+			},
+			{
+							"text": "I heard that in heartwood forest there is a fairy that makes you immortal why not travel there next. "
+							"personality": "1",
+							"answers": ["24","25","26"]
+			},
+			{
+							"text": "How’s your horse"
+							"personality": "1",
+							"answers": ["27","28","29"]
+			},
+			{
+							"text": "Hey, Look at her doesn’t she look great"
+							"personality": "2",
+							"answers": ["30","31","32"]
+			},
+			{
+							"text": "It’s a dark and stormy night isn’t it?"
+							"personality": "1",
+							"answers": ["32","33","34"]
+			},
+			{
+							"text": "What do you think of my tattoo’s?"
+							"personality": "0",
+							"answers": ["35","36","37"]
+			},
+			{
+							"text": "Are you going into battle?"
+							"personality": "0",
+							"answers": ["38","39","40"]
+			},
+			{
+							"text": "How did you get into adventuring?"
+							"personality": "0",
+							"answers": ["41","42","43"]
+			},
+			{
+							"text": "Do you have a moment to talk about our lord and savior Ma’tt M’ercer"
+							"personality": "2",
+							"answers": ["44","45","46"]
+			},
+			{
+							"text": "Aren’t you part of the Preatorian Guard?"
+							"personality": "1",
+							"answers": ["47","48","49"]
+			},
+			{
+							"text": "So you want to buy a dragon?"
+							"personality": "2",
+							"answers": ["50","51","52"]
+			},
+			{
+							"text": "Have you been to the Elves yet?"
+							"personality": "0",
+							"answers": ["53","54","55"]
+			},
+			{
+							"text": "Have you heard of the great explorer Edrin Goldfond?"
+							"personality": "0",
+							"answers": ["56","57","58"]
+			}
+
+	]
+}
