@@ -11,6 +11,13 @@ public class NPCDisplayer : MonoBehaviour
     public Race Race;
     public Profession Profession;
 
+
+    public void Start()
+    {
+
+    }
+
+
     public void ApplySprites(Sprite head, Sprite torso)
     {
         HeadImage.sprite = head;
@@ -49,4 +56,5 @@ public class NPCDisplayer : MonoBehaviour
         Debug.Log(headMatId);
         HeadImage.material = Resources.Load<Material>(headMatId);
     }
+
 }
