@@ -30,6 +30,7 @@ public class NPC
     public List<Need> Needs;
     public List<Need> SpecialNeeds;
 
+    [Range(0, 2.0f)]
     public float ComfortLevel;
     public Personality Character;
 

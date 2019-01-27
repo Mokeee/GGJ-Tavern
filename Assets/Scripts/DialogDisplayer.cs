@@ -22,10 +22,13 @@ public class DialogDisplayer : MonoBehaviour
     public QuestionChosenEvent QuestionChosenEvent = new QuestionChosenEvent();
 
     public TextMeshProUGUI TextMesh;
-
     public Button Next;
-
     public Button[] QuestionButtons = new Button[3];
+
+    [Header("Animation")]
+    public CanvasGroup CG;
+    public float Speed;
+
     private Text[] Texts;
 
     public void Start()
@@ -96,11 +99,38 @@ public class DialogDisplayer : MonoBehaviour
 
     public void SetInvisible()
     {
-        this.gameObject.SetActive(false);
+        StopAllCoroutines();
+        StartCoroutine(FadeOut());
     }
 
     public void SetVisible()
     {
-        this.gameObject.SetActive(true);
+        StopAllCoroutines();
+        StartCoroutine(FadeIn());
+    }
+
+    private IEnumerator FadeIn()
+    {
+        while (CG.alpha < 1.0f)
+        {
+            CG.alpha += Time.deltaTime * Speed;
+            yield return null;
+        }
+
+        CG.alpha = 1.0f;
+        CG.blocksRaycasts = true;
+    }
+
+
+    private IEnumerator FadeOut()
+    {
+        while (CG.alpha > 0.0f)
+        {
+            CG.alpha -= Time.deltaTime * Speed;
+            yield return null;
+        }
+
+        CG.alpha = 0.0f;
+        CG.blocksRaycasts = false;
     }
 }

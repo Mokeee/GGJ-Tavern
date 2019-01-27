@@ -26,8 +26,9 @@ public class GameClock : MonoBehaviour
     public InventorySystem InventorySystem;
     public NPCPool pool;
 
-    public int Day;
+    public static int Day;
 
+    public UnityEvent DayEndedEvent;
     public ReportEvent WeekEndedEvent;
 
     int CustomerCount;
@@ -40,7 +41,7 @@ public class GameClock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Day = 0;
+        Day = -1;
 
         Cod = new ConversationOverData();
 
@@ -213,13 +214,14 @@ public class GameClock : MonoBehaviour
     void EndDay()
     {
         Day++;
+        DayEndedEvent.Invoke();
 
         var report = new Report();
         report.days = Day;
         report.money = InventorySystem.Inventory.Money;
         report.customers = InventorySystem.Inventory.SatisfiedCustomers;
 
-        if (Day % 7 == 0)
+        if (Day % 7 == 0 && Day != 0)
             WeekEndedEvent.Invoke(report);
         else
             GetAllCustomersForNewDay();

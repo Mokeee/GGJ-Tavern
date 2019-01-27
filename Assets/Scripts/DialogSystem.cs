@@ -161,7 +161,6 @@ public class DialogSystem : MonoBehaviour
         }
         else
         {
-            Debug.Log("Current Comfort Level: " + NPC.ComfortLevel);
             if (QuestionSets.Count > 0 && NPC.ComfortLevel > 0)
             {
                 NextQuestions();
@@ -221,10 +220,11 @@ public class DialogSystem : MonoBehaviour
             case ReactionType.Annoying:
                 NPC.ComfortLevel -= 1f;
                 break;
+            case ReactionType.Okay:
+                NPC.ComfortLevel -= 0.5f;
+                break;
             case ReactionType.Comforting:
                 NPC.ComfortLevel += 0.5f;
-                break;
-            default:
                 break;
         }
 
@@ -232,7 +232,6 @@ public class DialogSystem : MonoBehaviour
         {
             //Only show the answer. The dialog will end when "..." is pressed and Next ist executed.
             DialogDisplayer.DisplaySnippet(answer.Text);
-            Mathf.Clamp01(NPC.ComfortLevel);
         }
         else
         {

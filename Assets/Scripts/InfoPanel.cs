@@ -10,6 +10,7 @@ public class InfoPanel : MonoBehaviour
     public TextMeshProUGUI Balance;
     public TextMeshProUGUI NewCustomersText;
 
+    [Header("Animation")]
     public float StartY;
     public float EndY;
     public float Speed;

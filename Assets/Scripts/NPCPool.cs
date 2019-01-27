@@ -38,6 +38,8 @@ public class NPCPool : MonoBehaviour
         {
             npc.ID = id - 1;
             NPCs[id - 1] = npc;
+            ActiveNPCs[id - 1] = true;
+            NPCVisuals[NPCVisuals.Count - 1].GetComponent<NPCDisplayer>().GenerateVisuals();
         }
         else
         {

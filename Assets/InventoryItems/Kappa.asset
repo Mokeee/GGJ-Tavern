@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sprite: {fileID: 0}
   Name: Kappa
-  InStockCount: 1
+  InStockCount: 0
   Need: 3
-  Price: 90
+  Price: 20

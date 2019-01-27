@@ -9,10 +9,12 @@ public class InventoryDisplayer : MonoBehaviour
     public GameObject ItemPrefab;
     public GameObject InventoryParent;
     public TextMeshProUGUI MoneyText;
+    public TextMeshProUGUI DaysText;
     public Button CloseInventoryButton;
 
     public InventorySystem InventorySystem;
 
+    [Header("Animation")]
     public float StartY;
     public float EndY;
     public float Speed;
@@ -24,7 +26,8 @@ public class InventoryDisplayer : MonoBehaviour
     {
         if (!isInitialized)
         {
-            MoneyText.text = InventorySystem.Inventory.Money.ToString();
+            MoneyText.text = "Gold: " + InventorySystem.Inventory.Money.ToString();
+            DaysText.text = "Days open: 1";
 
             foreach (var item in InventorySystem.Inventory.Items)
             {
@@ -89,7 +92,8 @@ public class InventoryDisplayer : MonoBehaviour
 
     public void UpdateInventory()
     {
-        MoneyText.text = InventorySystem.Inventory.Money.ToString();
+        MoneyText.text = "Gold: " + InventorySystem.Inventory.Money.ToString();
+        DaysText.text = "Days open: " + (GameClock.Day + 1);
 
         int index = 1;
         foreach (var item in InventorySystem.Inventory.Items)

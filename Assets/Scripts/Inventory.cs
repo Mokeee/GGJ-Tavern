@@ -68,6 +68,10 @@ public class Inventory : MonoBehaviour
                         npc.SpecialNeeds.Remove(Items[i].Need);
                         npc.ComfortLevel += SATISFACTIONINCREASE;
                     }
+                    else
+                    {
+                        npc.ComfortLevel -= SATISFACTIONINCREASE;
+                    }
                 }
             }
         }

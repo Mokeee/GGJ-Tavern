@@ -16,4 +16,4 @@ MonoBehaviour:
   Name: Potion
   InStockCount: 0
   Need: 10
-  Price: 10
+  Price: 5
