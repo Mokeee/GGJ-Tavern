@@ -1,16 +1,124 @@
 {
 	"greetings": [
 		{
-			"text": "Here goes your text.",
+			"text": "Greetings Friend",
 			"personality": "0"
 		},
 		{
-			"text": "Here goes your second text.",
+			"text": "Hello Innkeep,",
+			"personality": "0"
+		},
+		{
+			"text": "Hey, What a warm tavern you have here.",
+			"personality": "0"
+		},
+		{
+			"text": "The music is nice in here eh.",
+			"personality": "0"
+		},
+		{
+			"text": "Oooh!..It Smells lovely in here.",
+			"personality": "0"
+		},
+		{
+			"text": "What a day eh.",
+			"personality": "0"
+		},
+		{
+			"text": "Aahh, Finally some comfort.",
+			"personality": "0"
+		},
+		{
+			"text": "Hey, Nice to find a place like this",
+			"personality": "0"
+		},
+		{
+			"text": "Hello, what great place to hang my sword.",
+			"personality": "0"
+		},
+		{
+			"text": "Greetings,",
 			"personality": "1"
 		},
 		{
-			"text": "Here goes your third text.",
+			"text": "You’ve been granted an audience with me.",
+			"personality": "1"
+		},
+		{
+			"text": "Hello,Your protector is here.",
+			"personality": "1"
+		},
+		{
+			"text": "You have been graced with my presence,",
+			"personality": "1"
+		},
+		{
+			"text": "What a cute little place you have here.",
+			"personality": "1"
+		},
+		{
+			"text": "It’s me, I know. ",
+			"personality": "1"
+		},
+		{
+			"text": "I have arrived.",
+			"personality": "0"
+		},
+		{
+			"text": "Hello… You",
+			"personality": "1"
+		},
+		{
+			"text": "Here take my cloak",
+			"personality": "1"
+		},
+		{
+			"text": "Greetings Peasant,",
+			"personality": "1"
+		},
+		{
+			"text": "Serve me",
+			"personality": "1"
+		},
+		{
+			"text": "….Hey.",
 			"personality": "2"
-		}
+		},
+		{
+			"text": "H-Hello…",
+			"personality": "2"
+		},
+		{
+			"text": "E-Excuse me.",
+			"personality": "2"
+		},
+		{
+			"text": "Uhm.. Innkeep.",
+			"personality": "2"
+		},
+		{
+			"text": "Innkeep..Hey.",
+			"personality": "2"
+		},
+		{
+			"text": "Hey.. Yeah uhm.. hey.",
+			"personality": "2"
+		},
+		{
+			"text": "G-Greetings…",
+			"personality": "2"
+		},
+		{
+			"text": "Hello I-Innkeep",
+			"personality": "2"
+		},
+		{
+			"text": "It’s really nice in here….",
+			"personality": "2"
+		},
+		{
+			"text": " Hey..Hello…",
+			"personality": "2"
+		},
 	]
 }
