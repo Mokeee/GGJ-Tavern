@@ -1,6 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+[System.Serializable]
+public struct Report
+{
+    public int days;
+    public float money;
+    public int customers;
+}
+
+[System.Serializable]
+public class ReportEvent : UnityEvent<Report>
+{ }
 
 public class GameClock : MonoBehaviour
 {
@@ -14,6 +27,9 @@ public class GameClock : MonoBehaviour
     public NPCPool pool;
 
     public int Day;
+
+    public ReportEvent WeekEndedEvent;
+
     int CustomerCount;
 
     List<List<NPC>> CustomersOfDay;
@@ -38,7 +54,7 @@ public class GameClock : MonoBehaviour
     /// Gets all customers for new day.
     /// Calls proceed.
     /// </summary>
-    void GetAllCustomersForNewDay()
+    public void GetAllCustomersForNewDay()
     {
         CustomersOfDay = new List<List<NPC>>();
         CustomersOfDay.Add(GetLeavingCustomers());
@@ -109,7 +125,7 @@ public class GameClock : MonoBehaviour
     {
         Cod.npc = npc;
         Cod.isLeaving = isLeaving;
-        pool.NPCVisuals[npc.id].SetActive(true);
+        pool.NPCVisuals[npc.ID].SetActive(true);
         DialogSystem.StartDialog(npc, isLeaving);
     }
 
@@ -122,7 +138,7 @@ public class GameClock : MonoBehaviour
     {
         if (cod.isLeaving)
         {
-            pool.AnnihilateNPC(cod.npc.id);
+            pool.AnnihilateNPC(cod.npc.ID);
             Proceed();
         }
         else
@@ -178,7 +194,6 @@ public class GameClock : MonoBehaviour
     /// </summary>
     public void HandleEndOfFullfillment()
     {
-        pool.NPCVisuals[Cod.npc.id].SetActive(false);
         Proceed();
     }
 
@@ -198,7 +213,14 @@ public class GameClock : MonoBehaviour
     {
         Day++;
 
-        //Show UI
-        GetAllCustomersForNewDay();
+        var report = new Report();
+        report.days = Day;
+        report.money = InventorySystem.Inventory.Money;
+        report.customers = InventorySystem.Inventory.SatisfiedCustomers;
+
+        if (Day % 7 == 0)
+            WeekEndedEvent.Invoke(report);
+        else
+            GetAllCustomersForNewDay();
     }
 }

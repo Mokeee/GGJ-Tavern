@@ -37,13 +37,32 @@ public class InventorySystem : MonoBehaviour
 
     public void EndFullfillment()
     {
-        if ((!NPC.Needs.Contains(Need.Tired) && !NPC.SpecialNeeds.Contains(Need.Tired)) && NPC.StayDuration <= 0)
+        Inventory.Money += NPC.DuePayment * NPC.ComfortLevel;
+        Debug.Log(NPC.DuePayment);
+        Debug.Log(NPC.ComfortLevel);
+
+        if (NPC.ComfortLevel < 1)
         {
-            Inventory.Money += NPC.DuePayment * NPC.ComfortLevel;
-            Debug.Log(NPC.DuePayment);
-            Debug.Log(NPC.ComfortLevel);
-            pool.UpdateNPC(NPC);
+            pool.AnnihilateNPC(NPC.ID);
+
+            if (NPC.Satisfied)
+            {
+                Inventory.SatisfiedCustomers--;
+                NPC.Satisfied = false;
+            }
         }
+        else
+        {
+            if (!NPC.Satisfied)
+            {
+                Inventory.SatisfiedCustomers++;
+                NPC.Satisfied = true;
+            }
+        }
+
+        pool.NPCVisuals[NPC.ID].SetActive(false);
+
+        pool.UpdateNPC(NPC);
         NPC = null;
         EndedFullfillment.Invoke();
     }
