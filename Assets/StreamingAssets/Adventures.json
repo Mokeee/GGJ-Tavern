@@ -2,21 +2,183 @@
 	"adventures": [
 			{
 				"id" :  "0",
-				"text": "Here goes your text.",
+				"text": "I was riding along the trail.",
 				"need": "0",
 				"type": "1"
 			},
-    {
-      "id": "0",
-      "text": "Here goes your text.",
-      "need": "0",
-      "type": "2"
-    },
-    {
-      "id": "0",
-      "text": "Here goes your text.",
-      "need": "0",
-      "type": "3"
-    }
+			{
+				"id" :  "0",
+				"text": "I was minding my own business.",
+				"need": "0",
+				"type": "1"
+			},
+			{
+				"id" :  "0",
+				"text": "I was camping in the woods.",
+				"need": "0",
+				"type": "1"
+			},
+			{
+				"id" :  "0",
+				"text": "I was exploring the Wilds.",
+				"need": "0",
+				"type": "1"
+			},
+			{
+				"id" :  "0",
+				"text": "I was on guard near the castle. ",
+				"need": "0",
+				"type": "1"
+			},
+			{
+				"id" :  "0",
+				"text": "I was walking along the road.",
+				"need": "0",
+				"type": "1"
+			},
+			{
+				"id" :  "0",
+				"text": "I was tracking some deer.",
+				"need": "0",
+				"type": "1"
+			},
+			{
+				"id" :  "0",
+				"text": "I was looking for some shelter",
+				"need": "0",
+				"type": "1"
+			},
+			{
+				"id" :  "0",
+				"text": "When I was in a dungeon",
+				"need": "0",
+				"type": "1"
+			},
+			{
+				"id" :  "0",
+				"text": "When I was searching for treasure",
+				"need": "0",
+				"type": "1"
+			},
+			{
+				"id" :  "0",
+				"text": "And I had to defend a peasant from a goblin attack and I was injured by their arrows, I am happy that I survived.",
+				"need": "3",
+				"type": "2"
+			},
+			{
+				"id" :  "0",
+				"text": "And I had to rescue the princess from a Dragon and the battle was long and hard fought. ",
+				"need": "2",
+				"type": "2"
+			},
+			{
+				"id" :  "0",
+				"text": "And I had to Slay the zombie king and his putrid blade gave me a sickness. ",
+				"need": "0",
+				"type": "2"
+			},
+			{
+				"id" :  "0",
+				"text": "And was ambushed by a massive owlbear, The beast crushed my food",
+				"need": "1",
+				"type": "2"
+			},
+			{
+				"id" :  "0",
+				"text": "And I was attacked by highway men, I used my last spell on them ",
+				"need": "9",
+				"type": "2"
+			},
+			{
+				"id" :  "0",
+				"text": "And I was assaulted by a roving band of goblins. They were lead by a large bugbear. ",
+				"need": "0",
+				"type": "2"
+			},
+			{
+				"id" :  "0",
+				"text": "And I triggered a trap, a scythe came crashing down I blocked it with my sword ",
+				"need": "8",
+				"type": "2"
+			},
+			{
+				"id" :  "0",
+				"text": "And I stepped on a plate and suddenly two spouts of flame singed my cloak. ",
+				"need": "7",
+				"type": "2"
+			},
+			{
+				"id" :  "0",
+				"text": "And I found a sword, But when I touched it tried to attack me on its own. And it took a lot of magic to break the spell. ",
+				"need": "9",
+				"type": "2"
+			},
+			{
+				"id" :  "0",
+				"text": "A thief tried to rob me and he ran off with my backpack ",
+				"need": "11",
+				"type": "2"
+			},
+			{
+				"id" :  "0",
+				"text": "Also I dulled my blade on their shields",
+				"need": "8",
+				"type": "3"
+			},
+			{
+				"id" :  "0",
+				"text": "Also is there a place where a weary traveller can get some supplies. ",
+				"need": "11",
+				"type": "3"
+			},
+			{
+				"id" :  "0",
+				"text": "Also they have seem to have pierced my armour",
+				"need": "7",
+				"type": "3"
+			},
+			{
+				"id" :  "0",
+				"text": "Also I am completely out of magic.",
+				"need": "0",
+				"type": "9"
+			},
+			{
+				"id" :  "0",
+				"text": "I’m also nearly out of potions.",
+				"need": "11",
+				"type": "3"
+			},
+			{
+				"id" :  "0",
+				"text": "Also I wouldn’t mind to get to bed",
+				"need": "2",
+				"type": "3"
+			},
+			{
+				"id" :  "0",
+				"text": "I Also got hit hard on my helmet",
+				"need": "0",
+				"type": "3"
+			},
+			{
+				"id" :  "0",
+				"text": "Luckily im fine now ",
+				"need": "0",
+				"type": "3"
+			},
+			{
+				"id" :  "0",
+				"text": "But now I’m completely out of water ",
+				"need": "5",
+				"type": "3"
+			},
+			{
+				"id" :  "0",
+				"text": "I fell down while travelling back",
+				"need": "3",
+				"type": "3"
+			},
 	]
 }
