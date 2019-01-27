@@ -43,4 +43,17 @@ public class QuestionSet
         return list;
     }
 
+
+    public List<Personality> ToPersonalityList()
+    {
+        List<Personality> list = new List<Personality>();
+
+        for (int i = 0; i < Questions.Count; ++i)
+        {
+            list.Add(Questions[i].Personality);
+        }
+
+        return list;
+    }
+
 }
