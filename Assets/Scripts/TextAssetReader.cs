@@ -87,6 +87,8 @@ public class TextAssetReader : MonoBehaviour
 			Debug.LogError("Cannot find file!");
 		}
 
+        Debug.Log(loadedData.adventures.Length);
+
 		return loadedData.ConvertToAdventure();
 	}
 

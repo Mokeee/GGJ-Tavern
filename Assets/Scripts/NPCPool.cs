@@ -113,7 +113,7 @@ public class NPCPool : MonoBehaviour
 
     public void AnnihilateNPC(int id)
     {
-        ActiveNPCs[id] = false;
+        HideNPC(NPCs[id]);
         NPCAnnihilatedEvent.Invoke();
     }
 
@@ -121,5 +121,11 @@ public class NPCPool : MonoBehaviour
     {
         NPCVisuals[id].SetActive(true);
         NPCVisuals[id].gameObject.GetComponent<NPCMover>().MoveToTargetPosition();
+    }
+
+    public void HideNPC(NPC npc)
+    {
+        NPCVisuals[npc.ID].SetActive(false);
+        NPCVisuals[npc.ID].GetComponent<RectTransform>().anchoredPosition = new Vector2(-2000, 0);
     }
 }

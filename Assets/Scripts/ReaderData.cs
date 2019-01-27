@@ -104,6 +104,7 @@ public class AdventureData
 				var snippet = new Snippet();
 				snippet.Text = item.text;
 				snippet.Need = item.need;
+                Debug.Log(item.type);
 				adventure.AdventureSnippetDictionary[item.type].Add(snippet);
 			}
 
