@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49e2775816b2d4a308fc54121025ee89, type: 3}
-  m_Name: Steel Ingot
+  m_Name: Blacksmit Tools
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: 6b7a41f85ecb6984693af991e1ef9b04, type: 3}
-  Name: Steel Ingot
+  Sprite: {fileID: 0}
+  Name: Blacksmith Tools
+Tools.asset
   InStockCount: 0
   Need: 7
   Price: 50
