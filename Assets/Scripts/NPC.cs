@@ -35,7 +35,8 @@ public class NPC
 
     public int StayDuration = 0;
     public int FutureStayDuration = 0;
-    public int id;
+    public int ID;
+    public bool Satisfied;
 
     public int DuePayment;
 

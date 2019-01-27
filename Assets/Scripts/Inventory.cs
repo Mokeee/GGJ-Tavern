@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
     public const float SATISFACTIONINCREASE = 0.33f;
     public InventoryItem[] Items;
     public float Money = 100;
+    public int SatisfiedCustomers;
 
     private void Awake()
     {
