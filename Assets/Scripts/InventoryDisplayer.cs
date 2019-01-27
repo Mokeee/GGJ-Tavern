@@ -35,7 +35,7 @@ public class InventoryDisplayer : MonoBehaviour
                 var displayer = instance.GetComponent<ItemDisplayer>();
                 displayer.Name.text = item.Name;
                 displayer.StockCountText.text = "0";
-                displayer.NeedText.text = item.Need.ToString();
+                displayer.Image.sprite = item.Sprite;
                 displayer.CostText.text = item.Price.ToString();
             }
             isInitialized = true;
@@ -101,7 +101,7 @@ public class InventoryDisplayer : MonoBehaviour
             var displayer = InventoryParent.transform.GetChild(index).GetComponent<ItemDisplayer>();
             displayer.Name.text = item.Name;
             displayer.StockCountText.text = item.InStockCount.ToString();
-            displayer.NeedText.text = item.Need.ToString();
+            displayer.Image.sprite = item.Sprite;
             displayer.CostText.text = item.Price.ToString();
             index++;
         }

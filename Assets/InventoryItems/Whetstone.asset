@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e2775816b2d4a308fc54121025ee89, type: 3}
   m_Name: Whetstone
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: d500cd2bcfc68bb41a4d2546068f1afe, type: 3}
   Name: Whetstone
   InStockCount: 0
   Need: 8

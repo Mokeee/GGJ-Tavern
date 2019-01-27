@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sprite: {fileID: 0}
   Name: Blacksmith Tools
+Tools.asset
   InStockCount: 0
   Need: 7
   Price: 50

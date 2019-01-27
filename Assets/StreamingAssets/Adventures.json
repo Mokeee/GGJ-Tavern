@@ -141,18 +141,18 @@
 			{
 				"id" :  "0",
 				"text": "Also I am completely out of magic.",
-				"need": "0",
-				"type": "9"
+				"need": "9",
+				"type": "3"
 			},
 			{
 				"id" :  "0",
-				"text": "I’m also nearly out of potions.",
+				"text": "I'm also nearly out of potions.",
 				"need": "11",
 				"type": "3"
 			},
 			{
 				"id" :  "0",
-				"text": "Also I wouldn’t mind to get to bed",
+				"text": "Also I wouldn't mind to get to bed",
 				"need": "2",
 				"type": "3"
 			},
@@ -170,7 +170,7 @@
 			},
 			{
 				"id" :  "0",
-				"text": "But now I’m completely out of water ",
+				"text": "But now I'm completely out of water ",
 				"need": "5",
 				"type": "3"
 			},
@@ -179,6 +179,6 @@
 				"text": "I fell down while travelling back",
 				"need": "3",
 				"type": "3"
-			},
+			}
 	]
 }

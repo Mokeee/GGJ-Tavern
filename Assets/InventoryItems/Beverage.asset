@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e2775816b2d4a308fc54121025ee89, type: 3}
   m_Name: Beverage
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 08f8eed3e0de87f4b880e357d62e0352, type: 3}
   Name: Beverage
   InStockCount: 0
   Need: 5

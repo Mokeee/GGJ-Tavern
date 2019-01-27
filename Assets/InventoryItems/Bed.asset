@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e2775816b2d4a308fc54121025ee89, type: 3}
   m_Name: Bed
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: d95af17246ae8eb4ea396c287e9d272e, type: 3}
   Name: Bed
   InStockCount: 0
   Need: 2

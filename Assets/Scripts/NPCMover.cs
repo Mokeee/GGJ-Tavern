@@ -6,7 +6,7 @@ public class NPCMover : MonoBehaviour
 {
     public Vector3 TargetPosition;
 
-    public float Duration = 1;
+    public float Duration = 4;
 
 
     public void MoveToTargetPosition()
@@ -16,14 +16,14 @@ public class NPCMover : MonoBehaviour
 
     private IEnumerator MoveAnimation()
     {
-        Vector3 startPosition = transform.localPosition;
+        Vector2 startPosition = gameObject.GetComponent<RectTransform>().anchoredPosition;
 
         float startTime = Time.time;
         float timePassed = 0f;
 
         while ((timePassed = Time.time - startTime) < Duration)
         {
-            transform.position = Vector3.Lerp(startPosition, TargetPosition, timePassed / Duration);
+            gameObject.GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(startPosition, TargetPosition, timePassed / Duration);
 
             yield return new WaitForFixedUpdate();
         }
