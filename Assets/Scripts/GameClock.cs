@@ -30,6 +30,7 @@ public class GameClock : MonoBehaviour
 
     public UnityEvent DayEndedEvent;
     public ReportEvent WeekEndedEvent;
+    public UnityEvent ReadyToProceedEvent;
 
     int CustomerCount;
 
@@ -72,7 +73,7 @@ public class GameClock : MonoBehaviour
         CustomerCount += CustomersOfDay[2].Count;
         Debug.Log(CustomerCount);
 
-        Proceed();
+        ReadyToProceedEvent.Invoke();
     }
 
     /// <summary>
@@ -141,7 +142,7 @@ public class GameClock : MonoBehaviour
         if (cod.isLeaving)
         {
             pool.AnnihilateNPC(cod.npc.ID);
-            Proceed();
+            ReadyToProceedEvent.Invoke();
         }
         else
             StartFullfillment(cod.npc);
@@ -151,7 +152,7 @@ public class GameClock : MonoBehaviour
     /// Proceed to the next customer.
     /// Starts DialogSystem.
     /// </summary>
-    void Proceed()
+    public void Proceed()
     {
         if (CustomerCount > 0)
         {
@@ -196,7 +197,12 @@ public class GameClock : MonoBehaviour
     /// </summary>
     public void HandleEndOfFullfillment()
     {
-        Proceed();
+        if (CustomerCount > 0)
+        {
+            ReadyToProceedEvent.Invoke();
+        }
+        else
+            Proceed();
     }
 
     /// <summary>
