@@ -140,8 +140,8 @@ public class DialogSystem : MonoBehaviour
     private Question GetRandomQuestion(ReactionType type)
     {
         int index = Random.Range(0, TAR.TextAssets.Questions.Count);
-
-        while (TAR.TextAssets.Questions[index].Personality != NPC.Character)
+        
+        while (TAR.TextAssets.Questions[index].GetReactionFor(NPC.Character) != type)
         {
             index = (index + 1) % TAR.TextAssets.Questions.Count;
         }
@@ -161,7 +161,8 @@ public class DialogSystem : MonoBehaviour
         }
         else
         {
-            if (QuestionSets.Count > 0 && (int)NPC.ComfortLevel != 0)
+            Debug.Log("Current Comfort Level: " + NPC.ComfortLevel);
+            if (QuestionSets.Count > 0 && NPC.ComfortLevel > 0)
             {
                 NextQuestions();
             }
@@ -197,8 +198,6 @@ public class DialogSystem : MonoBehaviour
     /// </param>
     public void NextAnswer(int questionIndex)
     {
-        Debug.Log(questionIndex);
-        Debug.Log(QuestionSets.Peek().Questions.Count);
         //The question chosen by the player
         Question chosen = QuestionSets.Dequeue().Questions[questionIndex];
 
@@ -222,17 +221,18 @@ public class DialogSystem : MonoBehaviour
             case ReactionType.Annoying:
                 NPC.ComfortLevel -= 1f;
                 break;
-            case ReactionType.Okay:
-                NPC.ComfortLevel -= 0.5f;
+            case ReactionType.Comforting:
+                NPC.ComfortLevel += 0.5f;
                 break;
             default:
                 break;
         }
 
-        if ((int) NPC.ComfortLevel == 0 || QuestionSets.Count == 0)
+        if (NPC.ComfortLevel <= 0 || QuestionSets.Count == 0)
         {
-            //Only show the answer. The dilog will end when "..." is pressed and Next ist executed.
+            //Only show the answer. The dialog will end when "..." is pressed and Next ist executed.
             DialogDisplayer.DisplaySnippet(answer.Text);
+            Mathf.Clamp01(NPC.ComfortLevel);
         }
         else
         {

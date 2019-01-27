@@ -22,10 +22,8 @@ public class NPCDisplayer : MonoBehaviour
         gameObject.SetActive(false);
 
         string path = "Sprites/" + Race.ToString() + " " + Profession.ToString() + " Torso";
-        Debug.Log(path);
         var torsoSprite = Resources.Load<Sprite>(path);
         path = "Sprites/" + Race.ToString() + " " + Profession.ToString() + " Head " + Random.Range(1, 4);
-        Debug.Log(path);
         var headSprite = Resources.Load<Sprite>(path);
 
         ApplySprites(headSprite, torsoSprite);

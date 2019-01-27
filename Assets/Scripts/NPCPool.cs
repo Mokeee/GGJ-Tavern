@@ -36,14 +36,12 @@ public class NPCPool : MonoBehaviour
 
         if (NPCSet)
         {
-            Debug.Log("Registered on pooled object");
-            npc.id = id - 1;
+            npc.ID = id - 1;
             NPCs[id - 1] = npc;
         }
         else
         {
-            Debug.Log("Registered New");
-            npc.id = id;
+            npc.ID = id;
             NPCs.Add(npc);
             ActiveNPCs.Add(true);
             CVG.GeneratePrefab(VisualsParent);
@@ -105,7 +103,7 @@ public class NPCPool : MonoBehaviour
 
     public void UpdateNPC(NPC npc)
     {
-        NPCs[npc.id] = npc;
+        NPCs[npc.ID] = npc;
     }
 
     public void AnnihilateNPC(int id)

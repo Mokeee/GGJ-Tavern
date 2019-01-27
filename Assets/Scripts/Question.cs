@@ -29,9 +29,41 @@ public class Question
     /// </returns>
     public ReactionType GetReactionFor(Personality character)
     {
-        if (Personality == character)
+        if(character == Personality.Heroic)
         {
-            return ReactionType.Comforting;
+            switch(Personality)
+            {
+                case Personality.Heroic:
+                    return ReactionType.Comforting;
+                case Personality.Noble:
+                    return ReactionType.Annoying;
+                case Personality.Shy:
+                    return ReactionType.Okay;
+            }
+        }
+        else if (character == Personality.Noble)
+        {
+            switch (Personality)
+            {
+                case Personality.Heroic:
+                    return ReactionType.Okay;
+                case Personality.Noble:
+                    return ReactionType.Comforting;
+                case Personality.Shy:
+                    return ReactionType.Annoying;
+            }
+        }
+        else if (character == Personality.Shy)
+        {
+            switch (Personality)
+            {
+                case Personality.Heroic:
+                    return ReactionType.Annoying;
+                case Personality.Noble:
+                    return ReactionType.Okay;
+                case Personality.Shy:
+                    return ReactionType.Comforting;
+            }
         }
 
         return ReactionType.Annoying;
