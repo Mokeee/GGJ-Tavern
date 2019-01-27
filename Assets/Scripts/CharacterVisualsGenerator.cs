@@ -27,7 +27,7 @@ public class CharacterVisualsGenerator : MonoBehaviour
 
     public void GeneratePrefab(Transform parent)
     {
-        GameObject character;
+        GameObject character = parent.gameObject;
         Race race = (Race)Random.Range(0, 4);
         Profession profession = (Profession)Random.Range(0, 4);
 
@@ -58,5 +58,8 @@ public class CharacterVisualsGenerator : MonoBehaviour
                 display3.Profession = profession;
                 break;
         }
+
+        character.AddComponent<NPCMover>();
+        character.GetComponent<RectTransform>().anchoredPosition = new Vector2(-2000, 0);
     }
 }

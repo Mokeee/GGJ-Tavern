@@ -39,7 +39,7 @@ public class QuestionData
 
 	public List<Question> ConvertToQuestions(List<Snippet> answers)
 	{
-		var questions = new List<Question>();
+		var newQuestions = new List<Question>();
 
 		foreach (var item in this.questions)
 		{
@@ -54,10 +54,10 @@ public class QuestionData
 
 			question.Personality = item.personality;
 
-			questions.Add(question);
+			newQuestions.Add(question);
 		}
 
-		return questions;
+		return newQuestions;
 	}
 }
 

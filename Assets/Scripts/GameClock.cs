@@ -12,8 +12,10 @@ public struct Report
 }
 
 [System.Serializable]
-public class ReportEvent : UnityEvent<Report>
-{ }
+public class ReportEvent : UnityEvent<Report>{ }
+
+[System.Serializable]
+public class ProceedEvent : UnityEvent<int> { }
 
 public class GameClock : MonoBehaviour
 {
@@ -30,7 +32,10 @@ public class GameClock : MonoBehaviour
 
     public UnityEvent DayEndedEvent;
     public ReportEvent WeekEndedEvent;
-    public UnityEvent ReadyToProceedEvent;
+    public ProceedEvent ReadyToProceedEvent;
+
+    NPC NextCustomer;
+    bool NextCustomerIsLeaving;
 
     int CustomerCount;
 
@@ -73,7 +78,8 @@ public class GameClock : MonoBehaviour
         CustomerCount += CustomersOfDay[2].Count;
         Debug.Log(CustomerCount);
 
-        ReadyToProceedEvent.Invoke();
+        GenerateNextCustomer();
+        ReadyToProceedEvent.Invoke(NextCustomer.ID);
     }
 
     /// <summary>
@@ -127,7 +133,6 @@ public class GameClock : MonoBehaviour
     {
         Cod.npc = npc;
         Cod.isLeaving = isLeaving;
-        pool.NPCVisuals[npc.ID].SetActive(true);
         Debug.Log("Set " + npc.ID + " to visible.");
         DialogSystem.StartDialog(npc, isLeaving);
     }
@@ -142,7 +147,8 @@ public class GameClock : MonoBehaviour
         if (cod.isLeaving)
         {
             pool.AnnihilateNPC(cod.npc.ID);
-            ReadyToProceedEvent.Invoke();
+            GenerateNextCustomer();
+            ReadyToProceedEvent.Invoke(NextCustomer.ID);
         }
         else
             StartFullfillment(cod.npc);
@@ -154,32 +160,35 @@ public class GameClock : MonoBehaviour
     /// </summary>
     public void Proceed()
     {
-        if (CustomerCount > 0)
+        if (CustomerCount >= 0)
         {
-            bool customerFound = false;
-
-            while (!customerFound)
-            {
-                int index = Random.Range(0, 3);
-
-                var customerList = CustomersOfDay[index];
-
-                if (customerList.Count > 0)
-                {
-                    var customerIndex = Random.Range(0, customerList.Count);
-                    var customer = customerList[customerIndex];
-
-                    StartDialog(customer, (index == 0));
-
-                    CustomersOfDay[index].RemoveAt(customerIndex);
-                    CustomerCount--;
-                    customerFound = true;
-                }
-            }
+            StartDialog(NextCustomer, NextCustomerIsLeaving);
         }
         else
         {
             StartResupply();
+        }
+    }
+
+    void GenerateNextCustomer()
+    {
+        bool customerFound = false;
+
+        while (!customerFound)
+        {
+            int index = Random.Range(0, 3);
+            var customerList = CustomersOfDay[index];
+
+            if (customerList.Count > 0)
+            {
+                var customerIndex = Random.Range(0, customerList.Count);
+                NextCustomer = customerList[customerIndex];
+                NextCustomerIsLeaving = index == 0;
+
+                CustomersOfDay[index].RemoveAt(customerIndex);
+                CustomerCount--;
+                customerFound = true;
+            }
         }
     }
 
@@ -199,7 +208,8 @@ public class GameClock : MonoBehaviour
     {
         if (CustomerCount > 0)
         {
-            ReadyToProceedEvent.Invoke();
+            GenerateNextCustomer();
+            ReadyToProceedEvent.Invoke(NextCustomer.ID);
         }
         else
             Proceed();

@@ -116,4 +116,10 @@ public class NPCPool : MonoBehaviour
         ActiveNPCs[id] = false;
         NPCAnnihilatedEvent.Invoke();
     }
+
+    public void ShowEnteringNPC(int id)
+    {
+        NPCVisuals[id].SetActive(true);
+        NPCVisuals[id].gameObject.GetComponent<NPCMover>().MoveToTargetPosition();
+    }
 }
